@@ -183,7 +183,7 @@ export default function ParticipationsTable({
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nom</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Prénom</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date d'achat</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date d&apos;achat</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Montant</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Statut</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ticket</th>

@@ -13,7 +13,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input'
 import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
-import { RegistrationSuccess } from './RegistrationSuccess'
+
 
 const formSchema = z.object({
   nom: z.string().min(2, { message: "Le nom doit contenir au moins 2 caractères." }),
@@ -140,9 +140,6 @@ export function RegistrationForm() {
     }
   }
 
-  if (isSubmitted && registrationId) {
-    return <RegistrationSuccess registrationId={registrationId} />
-  }
 
   return (
     <Form {...form}>
@@ -268,7 +265,7 @@ export function RegistrationForm() {
                 </FormControl>
                 <div className="space-y-1 leading-none">
                   <FormLabel className="font-normal">
-                    J'accepte que mes données soient utilisées à des fins commerciales
+                    J&apos;accepte que mes données soient utilisées à des fins commerciales
                   </FormLabel>
                   <FormDescription>
                     Nous respectons votre vie privée et ne partagerons jamais vos informations avec des tiers.
