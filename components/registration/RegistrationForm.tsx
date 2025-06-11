@@ -246,7 +246,7 @@ export function RegistrationForm() {
                 </FormControl>
                 <div className="space-y-1 leading-none">
                   <FormLabel className="font-normal">
-                    J'accepte le règlement et que mes données soient utilisées dans le cadre du jeu concours *
+                    J&apos;accepte le règlement et que mes données soient utilisées dans le cadre du jeu concours *
                   </FormLabel>
                   <FormMessage />
                 </div>

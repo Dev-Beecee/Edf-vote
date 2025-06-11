@@ -208,7 +208,7 @@ export function TirageAuSort({ boutiques, participations }: TirageAuSortProps) {
 
             {/* Montant minimum */}
             <div>
-                <Label htmlFor="amount">Montant minimum d'achat (optionnel)</Label>
+                <Label htmlFor="amount">Montant minimum d&apos;achat (optionnel)</Label>
                 <Input
                     id="amount"
                     type="number"

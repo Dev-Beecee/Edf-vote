@@ -10,7 +10,7 @@ export function RegistrationConsigne() {
             </div>
             <h2 className="text-2xl font-semibold tracking-tight mb-3">Consignes de participation</h2>
             <p className="text-muted-foreground max-w-md mx-auto">
-                Veuillez conserver votre preuve d'achat. Assurez-vous de fournir des informations exactes pour que votre demande soit valide. Toute participation incomplète ne sera pas prise en compte.
+                Veuillez conserver votre preuve d&apos;achat. Assurez-vous de fournir des informations exactes pour que votre demande soit valide. Toute participation incomplète ne sera pas prise en compte.
             </p>
         </div>
     )
