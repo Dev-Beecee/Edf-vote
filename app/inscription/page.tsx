@@ -144,7 +144,7 @@ export default function InscriptionPage() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
+        <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4 mt-16">
             <div>
                 <Label>Nom</Label>
                 <Input name="nom" value={formData.nom} onChange={handleChange} required />
