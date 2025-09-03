@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
+import { ParticipationHeroSection } from "@/components/participation/ParticipationHeroSection";
 
 type Soumission = {
     id: string
@@ -83,6 +84,9 @@ export default function VotePage() {
     }
 
     return (
+        <main>
+            <ParticipationHeroSection />
+       
         <div className="p-6 max-w-6xl mx-auto mt-16">
             <h1 className="text-3xl font-bold mb-6">Votez pour vos vidéos préférées</h1>
 
@@ -142,5 +146,6 @@ export default function VotePage() {
                 </>
             )}
         </div>
+        </main>
     )
 }

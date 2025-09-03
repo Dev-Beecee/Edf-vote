@@ -35,7 +35,7 @@ interface FeatureProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "/inscription",
+    href: "/participation",
     label: "Je participe",
   },
   {
@@ -137,7 +137,7 @@ export const Navbar = () => {
           asChild 
           className="bg-[#001a70] hover:bg-[#001a70]/90 text-white rounded-lg"
         >
-          <Link href="/inscription">Je participe</Link>
+          <Link href="/participation">Je participe</Link>
         </Button>
         
         <Button 
