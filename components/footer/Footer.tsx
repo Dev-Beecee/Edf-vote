@@ -44,7 +44,7 @@ export function Footer() {
           </a>
           <div className="w-8 h-px bg-white mx-6"></div>
           <a href="/inscription" className="text-white uppercase font-medium hover:underline">
-            S'inscrire
+            S&apos;inscrire
           </a>
         </div>
                    {/* Séparateur blanc */}
