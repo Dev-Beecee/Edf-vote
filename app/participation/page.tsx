@@ -81,7 +81,7 @@ export default function InscriptionPage() {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: { "video/*": [] },
+    accept: { "video/mp4": [".mp4"] },
     maxFiles: 1,
   })
 
@@ -378,7 +378,7 @@ export default function InscriptionPage() {
           <Label className="text-[#344054]">Vidéo*</Label>
           <div
             {...getRootProps()}
-            className="w-full border-2 border-dashed border-[#d0d5dd] p-4 rounded text-center cursor-pointer bg-white hover:bg-gray-50"
+            className="w-full border-2 border-dashed border-[#d0d5dd] p-8 rounded text-center cursor-pointer bg-white hover:bg-gray-50 min-h-[120px] flex items-center justify-center"
           >
             <input {...getInputProps()} />
             {isDragActive ? (
@@ -386,7 +386,11 @@ export default function InscriptionPage() {
             ) : videoFile ? (
               <p className="text-black">🎬 {videoFile.name}</p>
             ) : (
-              <p className="text-black">Faites glisser une vidéo ici ou cliquez pour en sélectionner une</p>
+              <>
+                <p className="text-black">Faites glisser une vidéo ici ou cliquez pour en sélectionner une<br></br><span className="text-muted-foreground">Format accepté: MP4</span></p>
+                <br></br>
+              
+              </>
             )}
           </div>
 
@@ -405,7 +409,7 @@ export default function InscriptionPage() {
         </section>
 
         {/* 5) Consentements */}
-        <section className="space-y-2">
+        <section className="space-y-4">
           <div className="flex items-center gap-2">
             <input
               id="reglement_accepte"
@@ -414,8 +418,9 @@ export default function InscriptionPage() {
               checked={formData.reglement_accepte}
               onChange={handleCheckbox}
               required
+              className="w-5 h-5"
             />
-            <Label htmlFor="reglement_accepte" className="text-[#344054]">J&apos;ai lu et accepté le règlement*</Label>
+            <Label htmlFor="reglement_accepte" className="text-black">J&apos;ai lu et accepté le <a href="/reglement.pdf" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-800 underline">règlement</a>*</Label>
           </div>
 
           <div className="flex items-center gap-2">
@@ -426,8 +431,9 @@ export default function InscriptionPage() {
               checked={formData.autorisations_parentales}
               onChange={handleCheckbox}
               required
+              className="w-5 h-5"
             />
-            <Label htmlFor="autorisations_parentales" className="text-[#344054]">J&apos;ai réuni les autorisations parentales nécessaires*</Label>
+            <Label htmlFor="autorisations_parentales" className="text-black">J&apos;ai réuni les autorisations parentales nécessaires*</Label>
           </div>
 
           <div className="flex items-center gap-2">
@@ -438,8 +444,9 @@ export default function InscriptionPage() {
               checked={formData.autorise_diffusion}
               onChange={handleCheckbox}
               required
+              className="w-5 h-5"
             />
-            <Label htmlFor="autorise_diffusion" className="text-[#344054]">J&apos;autorise la diffusion des vidéos sur la plateforme publique*</Label>
+            <Label htmlFor="autorise_diffusion" className="text-black">J&apos;autorise la diffusion des vidéos sur la plateforme publique*</Label>
           </div>
         </section>
 
