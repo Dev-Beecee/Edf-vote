@@ -158,3 +158,17 @@ html {
     background-color: white !important;
   }
 }
+
+.participation-hero-bg {
+  background-image: url('/edf-femme-labo-inverse.png'), url('/Fille+Martinique2.png');
+  background-position: bottom right, bottom left;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 25%, 21%;
+}
+
+@media (min-width: 768px) {
+  .participation-hero-bg {
+    background-position: center right, center left;
+    background-size: 15%, 11%;
+  }
+}

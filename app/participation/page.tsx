@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
 import {
   Select,
   SelectTrigger,
@@ -45,6 +46,7 @@ type FormState = {
 
 export default function InscriptionPage() {
   const { toast } = useToast()
+  const router = useRouter()
 
   const [formData, setFormData] = useState<FormState>({
     nom: "",
@@ -208,29 +210,8 @@ export default function InscriptionPage() {
         throw new Error(j?.error || "Erreur lors de l'enregistrement")
       }
 
-      toast({ title: "Succès", description: "Soumission enregistrée." })
-
-      // Reset
-      setFormData({
-        nom: "",
-        prenom: "",
-        email: "",
-        telephone: "",
-        etablissement: "",
-        etablissement_adresse: "",
-        categorie: "",
-        nom_classe: "",
-        nb_eleves: "",
-        titre_projet: "",
-        description_breve: "",
-        video_url: "",
-        reglement_accepte: false,
-        autorisations_parentales: false,
-        autorise_diffusion: false,
-      })
-      setVideoFile(null)
-      setVideoPreview(null)
-      setUploadProgress(0)
+      // Redirection vers la page de confirmation
+      router.push('/participation/confirmation')
     } catch (error) {
       toast({ title: "Erreur", description: (error as Error).message })
     } finally {
@@ -241,7 +222,12 @@ export default function InscriptionPage() {
   return (
     <main>
       <ParticipationHeroSection />
-
+    <section className="" style={{
+      backgroundImage: 'url(/edf-hands.png), url(/edf-eolienne.png)',
+      backgroundPosition: '10% 10%, 85% 60%',
+      backgroundRepeat: 'no-repeat, no-repeat',
+      backgroundSize: 'auto, auto'
+    }}>
       <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-6 mt-16 px-2.5 md:px-0">
                 {/* 1) Informations sur l'enseignant */}
                 <div className="flex flex-col mb-6">
@@ -451,11 +437,13 @@ export default function InscriptionPage() {
         </section>
 
         <div className="flex justify-center">
-          <Button type="submit" disabled={uploading} className="w-full md:w-auto">
+          <Button type="submit" disabled={uploading} className="w-full md:w-auto" style={{ backgroundColor: '#FE5715' }}>
             {uploading ? "Envoi en cours..." : "Valider l'inscription"}
           </Button>
         </div>
       </form>
+    </section>
     </main>
+    
   )
 }
