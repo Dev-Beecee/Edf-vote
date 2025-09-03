@@ -151,5 +151,10 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+    background-color: white !important;
+  }
+  
+  html {
+    background-color: white !important;
   }
 }
