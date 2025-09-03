@@ -49,7 +49,7 @@ export const CommentParticiper = () => {
             </h2>
             <div className="max-w-3xl mx-auto">
               <p className="text-center text-black">
-                Une belle occasion pour vos élèves de mêler créativité, sciences et engagement pour un futur plus durable. Donnez-leur la parole, et révélez les génies de l'énergie !
+                Une belle occasion pour vos élèves de mêler créativité, sciences et engagement pour un futur plus durable. Donnez-leur la parole, et révélez les génies de l&apos;énergie !
               </p>
             </div>
           </div>

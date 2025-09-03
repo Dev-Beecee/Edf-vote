@@ -27,7 +27,7 @@ export const HeroSection = () => {
         
         {/* Phrase centrée avec style */}
         <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic" style={{ color: '#001a70' }}>
-          Des idées pleines d'énergie pour demain !
+          Des idées pleines d&apos;énergie pour demain !
         </h2>
         
        

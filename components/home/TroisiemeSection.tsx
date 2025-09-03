@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const TroisiemeSection = () => {
   return (
@@ -13,9 +14,11 @@ const TroisiemeSection = () => {
       <div className="container mx-auto px-4 flex items-center flex-col-reverse md:flex-row md:px-4" style={{ padding: '20px' }}>
         {/* Div 30% avec l'image de la fille de Martinique */}
         <div className="w-full md:w-3/10 flex justify-center mb-6 md:mb-0" style={{ marginTop: '55px' }}>
-          <img 
+          <Image 
             src="/edf-fillemartinique.png" 
             alt="Fille de Martinique" 
+            width={400}
+            height={600}
             className="w-full md:w-1/2 h-auto"
           />
         </div>
@@ -43,20 +46,20 @@ const TroisiemeSection = () => {
           {/* Liste avec éclairs */}
           <ul className="space-y-3 mb-8">
             <li className="flex items-center">
-              <img src="/edf-gros-eclair.png" alt="Éclair" className="w-6 h-6 mr-3" />
-              <span className="text-white text-lg">L'énergie renouvelable et la transition écologique</span>
+              <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3" />
+              <span className="text-white text-lg">L&apos;énergie renouvelable et la transition écologique</span>
             </li>
             <li className="flex items-center">
-              <img src="/edf-gros-eclair.png" alt="Éclair" className="w-6 h-6 mr-3" />
+              <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3" />
               <span className="text-white text-lg">Les innovations technologiques du secteur énergétique</span>
             </li>
             <li className="flex items-center">
-              <img src="/edf-gros-eclair.png" alt="Éclair" className="w-6 h-6 mr-3" />
-              <span className="text-white text-lg">La consommation responsable et les économies d'énergie</span>
+              <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3" />
+              <span className="text-white text-lg">La consommation responsable et les économies d&apos;énergie</span>
             </li>
             <li className="flex items-center">
-              <img src="/edf-gros-eclair.png" alt="Éclair" className="w-6 h-6 mr-3" />
-              <span className="text-white text-lg">Les métiers de l'énergie et les carrières du futur</span>
+              <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3" />
+              <span className="text-white text-lg">Les métiers de l&apos;énergie et les carrières du futur</span>
             </li>
           </ul>
 
@@ -75,9 +78,11 @@ const TroisiemeSection = () => {
       </div>
 
       {/* Image EDF en position absolue en bas à droite */}
-      <img 
+      <Image 
         src="/edf-icon-edf.png" 
         alt="Icon EDF" 
+        width={200}
+        height={200}
         className="absolute right-0 w-auto h-auto"
         style={{ zIndex: 10, bottom: '-50px' }}
       />
