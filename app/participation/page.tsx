@@ -252,7 +252,7 @@ export default function InscriptionPage() {
                 height={64} 
                 className="text-primary" 
               />
-              <p className="text-black mt-2 text-[32px] font-bold">Informations sur l'enseignant</p>
+              <p className="text-black mt-2 text-[32px] font-bold">Informations sur l&apos;enseignant</p>
             </div>
         <section className="flex flex-col gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -289,7 +289,7 @@ export default function InscriptionPage() {
         <section className="flex flex-col gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
-              <Label className="text-[#344054]">Nom de l'école ou du collège*</Label>
+              <Label className="text-[#344054]">Nom de l&apos;école ou du collège*</Label>
               <Input name="etablissement" placeholder="École élémentaire Jean Moulin" value={formData.etablissement} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
             </div>
             <div className="md:col-span-2">
@@ -328,7 +328,7 @@ export default function InscriptionPage() {
             </div>
 
             <div>
-              <Label className="text-[#344054]">Nombre d'élèves dans la classe*</Label>
+              <Label className="text-[#344054]">Nombre d&apos;élèves dans la classe*</Label>
               <Input
                 type="number"
                 min={0}
@@ -415,7 +415,7 @@ export default function InscriptionPage() {
               onChange={handleCheckbox}
               required
             />
-            <Label htmlFor="reglement_accepte" className="text-[#344054]">J'ai lu et accepté le règlement*</Label>
+            <Label htmlFor="reglement_accepte" className="text-[#344054]">J&apos;ai lu et accepté le règlement*</Label>
           </div>
 
           <div className="flex items-center gap-2">
@@ -427,7 +427,7 @@ export default function InscriptionPage() {
               onChange={handleCheckbox}
               required
             />
-            <Label htmlFor="autorisations_parentales" className="text-[#344054]">J'ai réuni les autorisations parentales nécessaires*</Label>
+            <Label htmlFor="autorisations_parentales" className="text-[#344054]">J&apos;ai réuni les autorisations parentales nécessaires*</Label>
           </div>
 
           <div className="flex items-center gap-2">
@@ -439,7 +439,7 @@ export default function InscriptionPage() {
               onChange={handleCheckbox}
               required
             />
-            <Label htmlFor="autorise_diffusion" className="text-[#344054]">J'autorise la diffusion des vidéos sur la plateforme publique*</Label>
+            <Label htmlFor="autorise_diffusion" className="text-[#344054]">J&apos;autorise la diffusion des vidéos sur la plateforme publique*</Label>
           </div>
         </section>
 

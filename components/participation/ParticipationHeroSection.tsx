@@ -27,7 +27,7 @@ export const ParticipationHeroSection = () => {
         
         {/* Sous-titre */}
         <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic mt-4" style={{ color: '#001a70' }}>
-          Des idées pleines d'énergie pour demain !
+          Des idées pleines d&apos;énergie pour demain !
         </h2>
         
         {/* Bannière concours vidéo */}
@@ -53,9 +53,9 @@ export const ParticipationHeroSection = () => {
         {/* Description de la participation */}
         <div className="mt-8 max-w-4xl mx-auto px-4">
           <p className="text-black text-lg text-center leading-relaxed" style={{ fontSize: '18px' }}>
-            Ce formulaire est destiné aux enseignants souhaitant inscrire leur classe (du CP à la 6e) au concours. Chaque classe peut soumettre jusqu'à 2 vidéos maximum dans le cadre du concours. Si vous souhaitez envoyer une deuxième vidéo, merci de remplir à nouveau ce formulaire avec les informations correspondantes.
+            Ce formulaire est destiné aux enseignants souhaitant inscrire leur classe (du CP à la 6e) au concours. Chaque classe peut soumettre jusqu&apos;à 2 vidéos maximum dans le cadre du concours. Si vous souhaitez envoyer une deuxième vidéo, merci de remplir à nouveau ce formulaire avec les informations correspondantes.
             <br /><br />
-            N'oubliez pas de donner un titre distinct à chaque vidéo pour faciliter l'identification.
+                          N&apos;oubliez pas de donner un titre distinct à chaque vidéo pour faciliter l&apos;identification.
           </p>
         </div>
 
