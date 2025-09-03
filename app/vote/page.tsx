@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
-import { ParticipationHeroSection } from "@/components/participation/ParticipationHeroSection";
+import { ParticipationHeroSection } from "@/components/participation/ParticipationHeroSection"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 
 type Soumission = {
     id: string
@@ -22,6 +23,7 @@ export default function VotePage() {
     const [ip, setIp] = useState("")
     const [loading, setLoading] = useState(true)
     const [hasVoted, setHasVoted] = useState(false)
+    const [activeTab, setActiveTab] = useState("")
     const { toast } = useToast()
 
     useEffect(() => {
@@ -31,6 +33,13 @@ export default function VotePage() {
             const result = await res.json()
             console.log("API Response:", result) // Debug log
             setData(result)
+            
+            // Définir le premier onglet comme actif par défaut
+            const categories = Object.keys(result)
+            if (categories.length > 0 && !activeTab) {
+                setActiveTab(categories[0])
+            }
+            
             setLoading(false)
         }
 
@@ -117,39 +126,50 @@ export default function VotePage() {
                             Aucune soumission disponible pour le moment.
                         </div>
                     ) : (
-                        Object.entries(data).map(([categorie, videos]) => (
-                            <div key={categorie} className="mb-10">
-                                <h2 className="text-xl font-semibold mb-4 text-black">{categorie}</h2>
-                                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {Array.isArray(videos) ? (
-                                        videos.map((video) => (
-                                            <div key={video.id} className=" p-4  text-black">
-                                                <video src={video.video_url} controls className="w-full rounded mb-2" />
-                                                <p className="text-black"><strong>{video.titre_projet}</strong></p>
-                                                <p className="text-black">{video.description_breve}</p>
-                                                <p className="text-black"><strong>Établissement :</strong> {video.etablissement}</p>
-                                                <p className="text-black"><strong>Classe :</strong> {video.nom_classe || "Non renseignée"}</p>
-                                                
-                                                <label className="flex items-center mt-2 space-x-2 text-black">
-                                                    <input
-                                                        type="radio"
-                                                        name={`vote-${categorie}`}
-                                                        value={video.id}
-                                                        checked={votes[categorie] === video.id}
-                                                        onChange={() => handleVoteChange(categorie, video.id)}
-                                                    />
-                                                    <span className="text-black">Je vote</span>
-                                                </label>
+                        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+                                {Object.keys(data).map((categorie) => (
+                                    <TabsTrigger key={categorie} value={categorie} className="text-sm">
+                                        {categorie}
+                                    </TabsTrigger>
+                                ))}
+                            </TabsList>
+                            
+                            {Object.entries(data).map(([categorie, videos]) => (
+                                <TabsContent key={categorie} value={categorie} className="mt-6">
+                                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                        {Array.isArray(videos) ? (
+                                            videos.map((video) => (
+                                                <div key={video.id} className="p-4 rounded-lg bg-white ">
+                                                    <video src={video.video_url} controls className="w-full rounded mb-2" />
+                                                    <p className="text-black"><strong>{video.titre_projet}</strong></p>
+                                                    <p className="text-black text-sm mb-2">{video.description_breve}</p>
+                                                    <p className="text-black text-sm"><strong>Établissement :</strong> {video.etablissement}</p>
+                                                    <p className="text-black text-sm mb-3"><strong>Classe :</strong> {video.nom_classe || "Non renseignée"}</p>
+                                                                                                        <div className="flex justify-center">
+                                                     <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
+                                                         <input
+                                                             type="radio"
+                                                             name={`vote-${categorie}`}
+                                                             value={video.id}
+                                                             checked={votes[categorie] === video.id}
+                                                             onChange={() => handleVoteChange(categorie, video.id)}
+                                                             className="text-blue-600"
+                                                         />
+                                                         <span className="text-black font-medium">Je vote</span>
+                                                     </label>
+                                                     </div>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <div className="col-span-full p-4 text-black bg-gray-50 rounded">
+                                                Aucune vidéo disponible pour cette catégorie ou format de données incorrect.
                                             </div>
-                                        ))
-                                    ) : (
-                                        <div className="col-span-full p-4 text-black bg-gray-50 rounded">
-                                            Aucune vidéo disponible pour cette catégorie ou format de données incorrect.
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        ))
+                                        )}
+                                    </div>
+                                </TabsContent>
+                            ))}
+                        </Tabs>
                     )}
 
                     {!loading && (
