@@ -40,13 +40,13 @@ export function CalendrierConcours() {
               Inscription et enregistrement des participations
             </p>
             {/* Connector image */}
-            <div className="hidden md:block absolute right-[-30%] z-20" style={{ top: '8rem' }}>
+            <div className="hidden md:block absolute right-[-30%] z-20" style={{ top: "8rem" }}>
               <Image
                 src="/edf-calendrier-sep1.png"
                 alt="Séparateur"
                 width={80}
                 height={20}
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: "100%", height: "100%" }}
               />
             </div>
           </div>
@@ -70,13 +70,13 @@ export function CalendrierConcours() {
               Votes du public sur le site du concours
             </p>
             {/* Connector image */}
-            <div className="hidden md:block absolute right-[-30%] z-20" style={{ top: '8rem' }}>
+            <div className="hidden md:block absolute right-[-30%] z-20" style={{ top: "8rem" }}>
               <Image
                 src="/edf-calendrier-sep2.png"
                 alt="Séparateur"
                 width={80}
                 height={20}
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: "100%", height: "100%" }}
               />
             </div>
           </div>
