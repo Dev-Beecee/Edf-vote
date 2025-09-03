@@ -242,7 +242,7 @@ export default function InscriptionPage() {
     <main>
       <ParticipationHeroSection />
 
-      <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-6 mt-16">
+      <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-6 mt-16 px-2.5 md:px-0">
                 {/* 1) Informations sur l'enseignant */}
                 <div className="flex flex-col mb-6">
               <Image 
@@ -252,7 +252,7 @@ export default function InscriptionPage() {
                 height={64} 
                 className="text-primary" 
               />
-              <p className="text-black mt-2 text-[32px] font-bold">Informations sur l&apos;enseignant</p>
+              <p className="text-black mt-2 text-[20px] md:text-[32px] font-bold">Informations sur l&apos;enseignant</p>
             </div>
         <section className="flex flex-col gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -284,7 +284,7 @@ export default function InscriptionPage() {
                 height={64} 
                 className="text-primary" 
               />
-              <p className="text-black mt-2 text-[32px] font-bold">Informations sur l’établissement</p>
+              <p className="text-black mt-2 text-[20px] md:text-[32px] font-bold">Informations sur l’établissement</p>
             </div>
         <section className="flex flex-col gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -352,7 +352,7 @@ export default function InscriptionPage() {
                 height={64} 
                 className="text-primary" 
               />
-              <p className="text-black mt-2 text-[32px] font-bold">Projet soumis par la classe</p>
+              <p className="text-black mt-2 text-[20px] md:text-[32px] font-bold">Projet soumis par la classe</p>
             </div>
         
         <section className="space-y-4">

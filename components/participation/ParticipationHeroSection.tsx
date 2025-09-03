@@ -8,10 +8,10 @@ export const ParticipationHeroSection = () => {
   return (
     <>
       <section className="flex flex-col items-center justify-center min-h-screen py-12 px-4 relative" style={{
-        backgroundImage: 'url(/edf-femme-labo-inverse.png)',
-        backgroundPosition: 'bottom right',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '15%'
+        backgroundImage: 'url(/edf-femme-labo-inverse.png), url(/Fille+Martinique2.png)',
+        backgroundPosition: 'center right, center left',
+        backgroundRepeat: 'no-repeat, no-repeat',
+        backgroundSize: '15%, 11%'
       }}>
         {/* Image centrée */}
         <div className="mb-8">
