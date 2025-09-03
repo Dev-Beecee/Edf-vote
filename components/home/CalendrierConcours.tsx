@@ -15,7 +15,7 @@ export function CalendrierConcours() {
             </div>
           </div>
           <p className="text-black text-sm">
-            Certaines dates sont susceptibles d'être modifiées.
+            Certaines dates sont susceptibles d&apos;être modifiées.
           </p>
         </div>
 
