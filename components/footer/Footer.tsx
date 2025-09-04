@@ -53,12 +53,10 @@ export function Footer() {
 {/* Section liens et copyright */}
 <div className="flex flex-col md:flex-row justify-evenly items-center py-6 px-4">
   <div className="flex gap-6 mb-4 md:mb-0">
-    <a href="/reglement" className="text-white underline text-sm">
-      Règlement du jeu
+    <a href="/Reglement_du_Concours.pdf" target="_blank" rel="noopener noreferrer" className="text-white underline text-sm">
+      Règlement du jeu &  Politique de confidentialité
     </a>
-    <a href="/politique-confidentialite" className="text-white underline text-sm">
-      Politique de confidentialité
-    </a>
+   
   </div>
   <div className="text-white text-sm">
     © 2025 EDF en Martinique

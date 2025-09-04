@@ -410,7 +410,7 @@ export default function InscriptionPage() {
               required
               className="w-5 h-5"
             />
-            <Label htmlFor="reglement_accepte" className="text-black">J&apos;ai lu et accepté le <a href="/reglement.pdf" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-800 underline">règlement</a>*</Label>
+            <Label htmlFor="reglement_accepte" className="text-black">J&apos;ai lu et accepté le <a href="/Reglement_du_Concours.pdf" target="_blank" rel="noopener noreferrer" className="text-black hover:text-blue-800 underline">règlement</a>*</Label>
           </div>
 
           <div className="flex items-center gap-2">

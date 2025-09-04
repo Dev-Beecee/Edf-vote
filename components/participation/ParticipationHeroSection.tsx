@@ -56,7 +56,7 @@ export const ParticipationHeroSection = () => {
 
         {/* Bouton d'action */}
         <div className="mt-12 flex justify-center items-center">
-          <Link href="/reglement.pdf">
+          <Link href="/Reglement_du_Concours.pdf" target="_blank">
             <Button 
               className="px-8 py-4 font-semibold text-lg uppercase"
               style={{ 
