@@ -347,15 +347,19 @@ export default function InscriptionPage() {
             <Input name="titre_projet" placeholder="Titre de votre projet" value={formData.titre_projet} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
           </div>
           <div>
-            <Label className="text-[#344054]">Brève description du projet (max)</Label>
+            <Label className="text-[#344054]">Brève description du projet (150 max)</Label>
             <textarea
               name="description_breve"
               placeholder="Décrivez brièvement votre projet..."
               value={formData.description_breve}
               onChange={handleChange}
+              maxLength={150}
               required
               className="w-full border border-[#d0d5dd] rounded p-2 min-h-[120px] bg-white placeholder:text-black text-black"
             />
+            <div className="text-sm text-gray-500 text-right mt-1">
+              {formData.description_breve?.length || 0}/150 caractères
+            </div>
           </div>
         </section>
 

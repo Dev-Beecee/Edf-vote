@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { ParticipationHeroSection } from "@/components/participation/ParticipationHeroSection"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 
 type Soumission = {
     id: string
@@ -23,8 +22,10 @@ export default function VotePage() {
     const [ip, setIp] = useState("")
     const [loading, setLoading] = useState(true)
     const [hasVoted, setHasVoted] = useState(false)
-    const [activeTab, setActiveTab] = useState("")
+    const [currentStep, setCurrentStep] = useState(1)
     const { toast } = useToast()
+
+    const categories = Object.keys(data)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,13 +34,6 @@ export default function VotePage() {
             const result = await res.json()
             console.log("API Response:", result) // Debug log
             setData(result)
-            
-            // Définir le premier onglet comme actif par défaut
-            const categories = Object.keys(result)
-            if (categories.length > 0 && !activeTab) {
-                setActiveTab(categories[0])
-            }
-            
             setLoading(false)
         }
 
@@ -55,6 +49,39 @@ export default function VotePage() {
 
     const handleVoteChange = (categorie: string, soumissionId: string) => {
         setVotes((prev) => ({ ...prev, [categorie]: soumissionId }))
+    }
+
+    const clearVoteForStep = (step: number) => {
+        if (step === 1 && categories[0]) {
+            setVotes((prev) => {
+                const newVotes = { ...prev }
+                delete newVotes[categories[0]]
+                return newVotes
+            })
+        } else if (step === 2 && categories[1]) {
+            setVotes((prev) => {
+                const newVotes = { ...prev }
+                delete newVotes[categories[1]]
+                return newVotes
+            })
+        }
+    }
+
+    const handleNext = () => {
+        if (currentStep < 3) {
+            setCurrentStep(currentStep + 1)
+        }
+    }
+
+    const handlePrevious = () => {
+        if (currentStep > 1) {
+            setCurrentStep(currentStep - 1)
+        }
+    }
+
+    const canProceedToNext = () => {
+        // L'utilisateur peut toujours passer à l'étape suivante
+        return true
     }
 
     const handleSubmit = async () => {
@@ -94,92 +121,229 @@ export default function VotePage() {
         }
     }
 
-    return (
-        <main>
-            <ParticipationHeroSection />
-       
-        <div className="p-6 max-w-6xl mx-auto mt-16 text-black">
-            <h1 className="text-3xl font-bold mb-6 text-black">Votez pour vos vidéos préférées</h1>
-
-            {hasVoted ? (
-                <div className="p-6 text-green-600 font-medium border border-green-300 bg-green-50 rounded">
-                    Merci pour votre participation ! Vous avez déjà voté.
+    const renderStepContent = () => {
+        if (currentStep === 1 && categories[0]) {
+            return (
+                <div className="space-y-6">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-2xl font-bold text-black">Étape 1 : Votez pour {categories[0]}</h2>
+                        {votes[categories[0]] && (
+                            <Button 
+                                onClick={() => clearVoteForStep(1)}
+                                variant="outline"
+                                size="sm"
+                                className="text-red-600 border-red-300 hover:bg-red-50"
+                            >
+                                Désélectionner
+                            </Button>
+                        )}
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {Array.isArray(data[categories[0]]) ? (
+                            data[categories[0]].map((video) => (
+                                <div key={video.id} className="p-4 rounded-lg bg-white">
+                                    <video src={video.video_url} controls className="w-full rounded mb-2" />
+                                    <p className="text-black"><strong>{video.titre_projet}</strong></p>
+                                    <p className="text-black text-sm mb-2">{video.description_breve}</p>
+                                    <p className="text-black text-sm"><strong>Établissement :</strong> {video.etablissement}</p>
+                                    <p className="text-black text-sm mb-3"><strong>Classe :</strong> {video.nom_classe || "Non renseignée"}</p>
+                                    <div className="flex justify-center">
+                                        <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
+                                            <input
+                                                type="radio"
+                                                name={`vote-${categories[0]}`}
+                                                value={video.id}
+                                                checked={votes[categories[0]] === video.id}
+                                                onChange={() => handleVoteChange(categories[0], video.id)}
+                                                className="text-blue-600"
+                                            />
+                                            <span className="text-black font-medium">Je vote</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="col-span-full p-4 text-black bg-gray-50 rounded">
+                                Aucune vidéo disponible pour cette catégorie.
+                            </div>
+                        )}
+                    </div>
                 </div>
-            ) : (
-                <>
-                    <div className="mb-6">
+            )
+        }
+
+        if (currentStep === 2 && categories[1]) {
+            return (
+                <div className="space-y-6">
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-2xl font-bold text-black">Étape 2 : Votez pour {categories[1]}</h2>
+                        {votes[categories[1]] && (
+                            <Button 
+                                onClick={() => clearVoteForStep(2)}
+                                variant="outline"
+                                size="sm"
+                                className="text-red-600 border-red-300 hover:bg-red-50"
+                            >
+                                Désélectionner
+                            </Button>
+                        )}
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {Array.isArray(data[categories[1]]) ? (
+                            data[categories[1]].map((video) => (
+                                <div key={video.id} className="p-4 rounded-lg bg-white">
+                                    <video src={video.video_url} controls className="w-full rounded mb-2" />
+                                    <p className="text-black"><strong>{video.titre_projet}</strong></p>
+                                    <p className="text-black text-sm mb-2">{video.description_breve}</p>
+                                    <p className="text-black text-sm"><strong>Établissement :</strong> {video.etablissement}</p>
+                                    <p className="text-black text-sm mb-3"><strong>Classe :</strong> {video.nom_classe || "Non renseignée"}</p>
+                                    <div className="flex justify-center">
+                                        <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
+                                            <input
+                                                type="radio"
+                                                name={`vote-${categories[1]}`}
+                                                value={video.id}
+                                                checked={votes[categories[1]] === video.id}
+                                                onChange={() => handleVoteChange(categories[1], video.id)}
+                                                className="text-blue-600"
+                                            />
+                                            <span className="text-black font-medium">Je vote</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="col-span-full p-4 text-black bg-gray-50 rounded">
+                                Aucune vidéo disponible pour cette catégorie.
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )
+        }
+
+        if (currentStep === 3) {
+            return (
+                <div className="space-y-6">
+                    <h2 className="text-2xl font-bold text-black mb-4">Étape 3 : Confirmez votre vote</h2>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                        <h3 className="text-lg font-semibold text-black mb-4">Récapitulatif de vos votes :</h3>
+                        {Object.entries(votes).map(([categorie, videoId]) => {
+                            const video = data[categorie]?.find(v => v.id === videoId)
+                            return (
+                                <div key={categorie} className="mb-3 p-3 bg-white rounded">
+                                    <p className="text-black"><strong>{categorie} :</strong> {video?.titre_projet}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="space-y-4">
+                        <label className="block text-black font-medium">
+                            Votre adresse email :
+                        </label>
                         <input
                             type="email"
                             placeholder="Votre adresse email"
-                            className="w-full p-2 border rounded"
+                            className="w-full p-3 border rounded-lg text-black bg-white"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
+                </div>
+            )
+        }
 
-                    {loading ? (
-                        <div className="flex justify-center items-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid" />
-                        </div>
-                    ) : Object.keys(data).length === 0 ? (
-                        <div className="text-center py-20 text-black">
-                            Aucune soumission disponible pour le moment.
-                        </div>
-                    ) : (
-                        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                            <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6">
-                                {Object.keys(data).map((categorie) => (
-                                    <TabsTrigger key={categorie} value={categorie} className="text-sm">
-                                        {categorie}
-                                    </TabsTrigger>
-                                ))}
-                            </TabsList>
-                            
-                            {Object.entries(data).map(([categorie, videos]) => (
-                                <TabsContent key={categorie} value={categorie} className="mt-6">
-                                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                        {Array.isArray(videos) ? (
-                                            videos.map((video) => (
-                                                <div key={video.id} className="p-4 rounded-lg bg-white ">
-                                                    <video src={video.video_url} controls className="w-full rounded mb-2" />
-                                                    <p className="text-black"><strong>{video.titre_projet}</strong></p>
-                                                    <p className="text-black text-sm mb-2">{video.description_breve}</p>
-                                                    <p className="text-black text-sm"><strong>Établissement :</strong> {video.etablissement}</p>
-                                                    <p className="text-black text-sm mb-3"><strong>Classe :</strong> {video.nom_classe || "Non renseignée"}</p>
-                                                                                                        <div className="flex justify-center">
-                                                     <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
-                                                         <input
-                                                             type="radio"
-                                                             name={`vote-${categorie}`}
-                                                             value={video.id}
-                                                             checked={votes[categorie] === video.id}
-                                                             onChange={() => handleVoteChange(categorie, video.id)}
-                                                             className="text-blue-600"
-                                                         />
-                                                         <span className="text-black font-medium">Je vote</span>
-                                                     </label>
-                                                     </div>
-                                                </div>
-                                            ))
+        return null
+    }
+
+    return (
+        <main>
+            <ParticipationHeroSection />
+       
+            <div className="p-6 max-w-6xl mx-auto mt-16 text-black">
+                <h1 className="text-3xl font-bold mb-6 text-black">Votez pour vos vidéos préférées</h1>
+
+                {/* Indicateur de progression */}
+                <div className="mb-8">
+                    <div className="flex items-center justify-center">
+                        {[1, 2, 3].map((step, index) => (
+                            <div key={step} className="flex items-center">
+                                <div className="flex flex-col items-center">
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                                        step <= currentStep 
+                                            ? 'bg-blue-600 text-white' 
+                                            : 'bg-gray-200 text-gray-600'
+                                    }`}>
+                                        {step}
+                                    </div>
+                                    <div className="mt-2 text-sm text-gray-600 text-center">
+                                        {step === 1 && <span>{categories[0]}</span>}
+                                        {step === 2 && <span>{categories[1]}</span>}
+                                        {step === 3 && <span>Validation</span>}
+                                    </div>
+                                </div>
+                                {index < 2 && (
+                                    <div className={`w-16 h-1 mx-4 ${
+                                        step < currentStep ? 'bg-blue-600' : 'bg-gray-200'
+                                    }`} />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {hasVoted ? (
+                    <div className="p-6 text-green-600 font-medium border border-green-300 bg-green-50 rounded">
+                        Merci pour votre participation ! Vous avez déjà voté.
+                    </div>
+                ) : (
+                    <>
+                        {loading ? (
+                            <div className="flex justify-center items-center py-20">
+                                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid" />
+                            </div>
+                        ) : Object.keys(data).length === 0 ? (
+                            <div className="text-center py-20 text-black">
+                                Aucune soumission disponible pour le moment.
+                            </div>
+                        ) : (
+                            <>
+                                {renderStepContent()}
+
+                                {/* Navigation */}
+                                <div className="flex justify-between mt-8">
+                                    {currentStep > 1 && (
+                                        <Button 
+                                            onClick={handlePrevious}
+                                            className="bg-[#001a70] text-white border-none"
+                                        >
+                                            Précédent
+                                        </Button>
+                                    )}
+                                    
+                                    <div className={`flex space-x-4 ${currentStep === 1 ? 'ml-auto' : ''}`}>
+                                        {currentStep < 3 ? (
+                                            <Button 
+                                                onClick={handleNext}
+                                                className="border-none"
+                                            >
+                                                Suivant
+                                            </Button>
                                         ) : (
-                                            <div className="col-span-full p-4 text-black bg-gray-50 rounded">
-                                                Aucune vidéo disponible pour cette catégorie ou format de données incorrect.
-                                            </div>
+                                            <Button 
+                                                onClick={handleSubmit}
+                                                className="border-none"
+                                            >
+                                                Valider mes votes
+                                            </Button>
                                         )}
                                     </div>
-                                </TabsContent>
-                            ))}
-                        </Tabs>
-                    )}
-
-                    {!loading && (
-                        <Button className="mt-8" onClick={handleSubmit}>
-                            Valider mes votes
-                        </Button>
-                    )}
-                </>
-            )}
-        </div>
+                                </div>
+                            </>
+                        )}
+                    </>
+                )}
+            </div>
         </main>
     )
 }
