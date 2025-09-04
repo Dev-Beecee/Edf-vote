@@ -12,7 +12,7 @@ export default function Sidebar({ onLogout, collapsed, setCollapsed }: SidebarPr
     const menuItems = [
         { label: "Dashboard", href: "/ghost-dashboard", icon: LayoutDashboard },
         { label: "Inscriptions", href: "/ghost-dashboard/inscriptions", icon: Users },
-        { label: "Participations", href: "/ghost-dashboard/participations", icon: Mail },
+        { label: "Participations", href: "/ghost-dashboard/vote", icon: Mail },
     ];
 
     return (

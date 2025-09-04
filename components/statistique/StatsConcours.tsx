@@ -206,9 +206,7 @@ export default function StatsConcours() {
                                 <p className="text-xs text-gray-500 mt-1 truncate">
                                     &ldquo;{stats.top_projet.titre_projet}&rdquo;
                                 </p>
-                                <p className="text-xs text-gray-400 mt-1">
-                                    ID: {stats.top_projet.soumission_id}
-                                </p>
+                               
                             </>
                         ) : (
                             <>

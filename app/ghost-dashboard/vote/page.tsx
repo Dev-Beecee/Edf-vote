@@ -6,7 +6,7 @@ import { useAuth } from "@/hooks/use-auth";
 import Sidebar from "@/components/sidebar";
 import VotesCountPerProject from "@/components/votes-count-per-project/VotesCountPerProject";
 
-export default function ParticipationsPage() {
+export default function VotePage() {
     const router = useRouter();
     const { user, loading: authLoading, logout } = useAuth();
     const [collapsed, setCollapsed] = useState(false);
@@ -45,7 +45,6 @@ export default function ParticipationsPage() {
         <div className="flex min-h-screen bg-gray-100">
             <Sidebar onLogout={handleLogout} collapsed={collapsed} setCollapsed={setCollapsed} />
             <main className={`flex-1 transition-all duration-300 ease-in-out ${collapsed ? "ml-20" : "ml-64"} p-6`}>
-            <div className="flex-1 p-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold tracking-tight">Statistiques des votes</h1>
                     <p className="text-muted-foreground mt-2">
@@ -54,8 +53,6 @@ export default function ParticipationsPage() {
                 </div>
                 
                 <VotesCountPerProject />
-           
-            </div>
             </main>
         </div>
     );
