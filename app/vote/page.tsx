@@ -401,7 +401,7 @@ export default function VotePage() {
 
                 {hasVoted ? (
                     <div className="p-6 text-green-600 font-medium border border-green-300 bg-green-50 rounded">
-                        Merci pour votre participation ! Vous avez déjà voté.
+                        Merci pour votre participation ! 
                     </div>
                 ) : (
                     <>
