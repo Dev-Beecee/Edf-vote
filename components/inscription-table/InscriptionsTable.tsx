@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 type Soumission = {
     id: string
@@ -33,6 +34,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
     const [modalVideo, setModalVideo] = useState<string | null>(null)
     const [modalInfos, setModalInfos] = useState<Soumission | null>(null)
     const [statutFilter, setStatutFilter] = useState<string>("tous")
+    const [searchTerm, setSearchTerm] = useState<string>("")
     const { toast } = useToast()
     const itemsPerPage = 10
 
@@ -40,11 +42,15 @@ export default function InscriptionsTable({ soumissions }: Props) {
         Object.fromEntries(soumissions.map((s) => [s.id, s.statut]))
     )
 
-    // Appliquer le filtre si un statut est sélectionné et trier par date de création (du plus récent au plus ancien)
-    const filteredSoumissions = (statutFilter !== "tous"
-        ? soumissions.filter((s) => s.statut === statutFilter)
-        : soumissions
-    ).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+    // Appliquer les filtres (statut et recherche par titre) et trier par date de création (du plus récent au plus ancien)
+    const filteredSoumissions = soumissions
+        .filter((s) => {
+            const matchesStatut = statutFilter === "tous" || s.statut === statutFilter
+            const matchesSearch = searchTerm === "" || 
+                s.titre_projet.toLowerCase().includes(searchTerm.toLowerCase())
+            return matchesStatut && matchesSearch
+        })
+        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
 
     const totalPages = Math.ceil(filteredSoumissions.length / itemsPerPage)
     const startIndex = (currentPage - 1) * itemsPerPage
@@ -52,7 +58,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
 
 
     const handleExportCSV = () => {
-        const headers = ["Nom", "Prénom", "Établissement", "Nom de la classe", "Catégorie", "Statut", "Date"]
+        const headers = ["Nom", "Prénom", "Établissement", "Nom de la classe", "Catégorie", "Statut", "Titre du projet", "Date"]
         const rows = soumissions.map((i) => [
             i.nom,
             i.prenom,
@@ -60,6 +66,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
             i.nom_classe || "",
             i.categorie,
             i.statut,
+            i.titre_projet,
             new Date(i.created_at).toLocaleDateString()
         ])
 
@@ -99,8 +106,13 @@ export default function InscriptionsTable({ soumissions }: Props) {
     return (
         <div>
             <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
-                
                 <div className="flex items-center gap-4">
+                    <Input
+                        placeholder="Rechercher par titre de projet..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-[300px]"
+                    />
                     <Select onValueChange={(value) => setStatutFilter(value)}>
                         <SelectTrigger className="w-[180px]">
                             <SelectValue placeholder="Filtrer par statut" />
@@ -122,7 +134,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
-                                {["Nom", "Prénom", "Établissement", "Nom de la classe", "Catégorie", "Statut", "Date", "Vidéo"].map((h) => (
+                                {["Titre du projet", "Nom", "Prénom", "Établissement", "Nom de la classe", "Catégorie", "Statut", "Date", "Vidéo"].map((h) => (
                                     <th key={h} className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{h}</th>
                                 ))}
                             </tr>
@@ -130,6 +142,9 @@ export default function InscriptionsTable({ soumissions }: Props) {
                         <tbody className="bg-white divide-y divide-gray-200">
                             {currentItems.map((s) => (
                                 <tr key={s.id}>
+                                    <td className="px-4 py-2 text-sm text-black max-w-[200px] truncate" title={s.titre_projet}>
+                                        {s.titre_projet}
+                                    </td>
                                     <td className="px-4 py-2 text-sm text-black">{s.nom}</td>
                                     <td className="px-4 py-2 text-sm text-black">{s.prenom}</td>
                                     <td className="px-4 py-2 text-sm text-black">{s.etablissement}</td>
