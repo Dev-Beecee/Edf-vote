@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
-import { ParticipationHeroSection } from "@/components/participation/ParticipationHeroSection"
+import { VoteHeroSection } from "@/components/vote/VoteHeroSection"
 
 type Soumission = {
     id: string
@@ -23,6 +23,7 @@ export default function VotePage() {
     const [loading, setLoading] = useState(true)
     const [hasVoted, setHasVoted] = useState(false)
     const [currentStep, setCurrentStep] = useState(1)
+    const [showAllVideos, setShowAllVideos] = useState<{ [categorie: string]: boolean }>({})
     const { toast } = useToast()
 
     const categories = Object.keys(data)
@@ -121,32 +122,45 @@ export default function VotePage() {
         }
     }
 
+    const handleShowAllVideos = (categorie: string) => {
+        setShowAllVideos(prev => ({ ...prev, [categorie]: true }))
+    }
+
     const renderStepContent = () => {
         if (currentStep === 1 && categories[0]) {
+            const videos = Array.isArray(data[categories[0]]) ? data[categories[0]] : []
+            const displayedVideos = showAllVideos[categories[0]] ? videos : videos.slice(0, 6)
+            const hasMoreVideos = videos.length > 6
+
             return (
                 <div className="space-y-6">
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-2xl font-bold text-black">Étape 1 : Votez pour {categories[0]}</h2>
+                    <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                        <h2 className="text-xl md:text-2xl font-bold text-[#001a70]">Étape 1 : Votez pour {categories[0]}</h2>
                         {votes[categories[0]] && (
                             <Button 
                                 onClick={() => clearVoteForStep(1)}
                                 variant="outline"
                                 size="sm"
-                                className="text-red-600 border-red-300 hover:bg-red-50"
+                                className="text-[#FE5715] border-[#FE5715] bg-white hover:bg-white hover:text-[#FE5715]"
                             >
                                 Désélectionner
                             </Button>
                         )}
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {Array.isArray(data[categories[0]]) ? (
-                            data[categories[0]].map((video) => (
+                        {displayedVideos.length > 0 ? (
+                            displayedVideos.map((video) => (
                                 <div key={video.id} className="p-4 rounded-lg bg-white">
                                     <video src={video.video_url} controls className="w-full rounded mb-2" />
                                     <p className="text-black"><strong>{video.titre_projet}</strong></p>
+                                    <div className="h-[90px]">
                                     <p className="text-black text-sm mb-2">{video.description_breve}</p>
-                                    <p className="text-black text-sm"><strong>Établissement :</strong> {video.etablissement}</p>
-                                    <p className="text-black text-sm mb-3"><strong>Classe :</strong> {video.nom_classe || "Non renseignée"}</p>
+                                    </div>
+                                    
+                                    <p className="text-black text-sm mt-2.5"><strong>Établissement </strong></p>
+                                    <p className="text-black text-sm">{video.etablissement}</p>
+                                    <p className="text-black text-sm mt-2.5"><strong>Classe </strong> </p>
+                                    <p className="text-black text-sm "> {video.nom_classe || "Non renseignée"}</p>
                                     <div className="flex justify-center">
                                         <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
                                             <input
@@ -168,35 +182,64 @@ export default function VotePage() {
                             </div>
                         )}
                     </div>
+                    
+                    {hasMoreVideos && !showAllVideos[categories[0]] && (
+                        <div className="flex justify-center mt-6">
+                            <button
+                                onClick={() => handleShowAllVideos(categories[0])}
+                                className="px-6 py-3 text-[#001a70] bg-transparent border border-[#001a70] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md"
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    color: 'rgb(0, 26, 112)',
+                                    border: '1px solid rgb(0, 26, 112)',
+                                    borderRadius: '8px',
+                                    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px',
+                                    transition: '0.3s',
+                                    transform: 'translateY(0px)'
+                                }}
+                            >
+                                Voir plus de vidéos
+                            </button>
+                        </div>
+                    )}
                 </div>
             )
         }
 
         if (currentStep === 2 && categories[1]) {
+            const videos = Array.isArray(data[categories[1]]) ? data[categories[1]] : []
+            const displayedVideos = showAllVideos[categories[1]] ? videos : videos.slice(0, 6)
+            const hasMoreVideos = videos.length > 6
+
             return (
                 <div className="space-y-6">
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-2xl font-bold text-black">Étape 2 : Votez pour {categories[1]}</h2>
+                    <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                        <h2 className="text-xl md:text-2xl font-bold text-[#001a70]">Étape 2 : Votez pour {categories[1]}</h2>
                         {votes[categories[1]] && (
                             <Button 
                                 onClick={() => clearVoteForStep(2)}
                                 variant="outline"
                                 size="sm"
-                                className="text-red-600 border-red-300 hover:bg-red-50"
+                                className="text-[#FE5715] border-[#FE5715] bg-white hover:bg-white hover:text-[#FE5715]"
                             >
                                 Désélectionner
                             </Button>
                         )}
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {Array.isArray(data[categories[1]]) ? (
-                            data[categories[1]].map((video) => (
+                        {displayedVideos.length > 0 ? (
+                            displayedVideos.map((video) => (
                                 <div key={video.id} className="p-4 rounded-lg bg-white">
                                     <video src={video.video_url} controls className="w-full rounded mb-2" />
                                     <p className="text-black"><strong>{video.titre_projet}</strong></p>
+                                    <div className="h-[90px]">
                                     <p className="text-black text-sm mb-2">{video.description_breve}</p>
-                                    <p className="text-black text-sm"><strong>Établissement :</strong> {video.etablissement}</p>
-                                    <p className="text-black text-sm mb-3"><strong>Classe :</strong> {video.nom_classe || "Non renseignée"}</p>
+                                    </div>
+                                    
+                                    <p className="text-black text-sm mt-2.5"><strong>Établissement </strong></p>
+                                    <p className="text-black text-sm">{video.etablissement}</p>
+                                    <p className="text-black text-sm mt-2.5"><strong>Classe </strong> </p>
+                                    <p className="text-black text-sm "> {video.nom_classe || "Non renseignée"}</p>
                                     <div className="flex justify-center">
                                         <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
                                             <input
@@ -218,6 +261,26 @@ export default function VotePage() {
                             </div>
                         )}
                     </div>
+                    
+                    {hasMoreVideos && !showAllVideos[categories[1]] && (
+                        <div className="flex justify-center mt-6">
+                            <button
+                                onClick={() => handleShowAllVideos(categories[1])}
+                                className="px-6 py-3 text-[#001a70] bg-transparent border border-[#001a70] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md"
+                                style={{
+                                    backgroundColor: 'transparent',
+                                    color: 'rgb(0, 26, 112)',
+                                    border: '1px solid rgb(0, 26, 112)',
+                                    borderRadius: '8px',
+                                    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px',
+                                    transition: '0.3s',
+                                    transform: 'translateY(0px)'
+                                }}
+                            >
+                                Voir plus de vidéos
+                            </button>
+                        </div>
+                    )}
                 </div>
             )
         }
@@ -225,7 +288,7 @@ export default function VotePage() {
         if (currentStep === 3) {
             return (
                 <div className="space-y-6">
-                    <h2 className="text-2xl font-bold text-black mb-4">Étape 3 : Confirmez votre vote</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-[#001a70]">Étape 3 : Confirmez votre vote</h2>
                     <div className="bg-gray-50 p-6 rounded-lg">
                         <h3 className="text-lg font-semibold text-black mb-4">Récapitulatif de vos votes :</h3>
                         {Object.entries(votes).map(([categorie, videoId]) => {
@@ -258,10 +321,10 @@ export default function VotePage() {
 
     return (
         <main>
-            <ParticipationHeroSection />
+            <VoteHeroSection />
        
-            <div className="p-6 max-w-6xl mx-auto mt-16 text-black">
-                <h1 className="text-3xl font-bold mb-6 text-black">Votez pour vos vidéos préférées</h1>
+            <div className="p-6 max-w-6xl mx-auto mt-16 mb-50 text-black">
+               
 
                 {/* Indicateur de progression */}
                 <div className="mb-8">
@@ -271,20 +334,20 @@ export default function VotePage() {
                                 <div className="flex flex-col items-center">
                                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                                         step <= currentStep 
-                                            ? 'bg-blue-600 text-white' 
+                                            ? 'bg-[#001a70] text-white' 
                                             : 'bg-gray-200 text-gray-600'
                                     }`}>
                                         {step}
                                     </div>
-                                    <div className="mt-2 text-sm text-gray-600 text-center">
-                                        {step === 1 && <span>{categories[0]}</span>}
-                                        {step === 2 && <span>{categories[1]}</span>}
-                                        {step === 3 && <span>Validation</span>}
+                                    <div className="mt-2 text-sm text-center">
+                                        {step === 1 && <span className={step <= currentStep ? 'text-[#001a70]' : 'text-gray-600'}>{categories[0]}</span>}
+                                        {step === 2 && <span className={step <= currentStep ? 'text-[#001a70]' : 'text-gray-600'}>{categories[1]}</span>}
+                                        {step === 3 && <span className={step <= currentStep ? 'text-[#001a70]' : 'text-gray-600'}>Validation</span>}
                                     </div>
                                 </div>
                                 {index < 2 && (
-                                    <div className={`w-16 h-1 mx-4 ${
-                                        step < currentStep ? 'bg-blue-600' : 'bg-gray-200'
+                                    <div className={`w-0 md:w-16 h-1 mx-4 ${
+                                        step < currentStep ? 'bg-[#001a70]' : 'bg-gray-200'
                                     }`} />
                                 )}
                             </div>

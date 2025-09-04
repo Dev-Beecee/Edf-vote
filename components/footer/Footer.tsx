@@ -21,7 +21,7 @@ export function Footer() {
           alt="Homme en laboratoire EDF"
           width={287}
           height={287}
-          className="absolute left-0 -top-[310px] md:-top-[310px] -top-[50px] h-[240px] md:h-auto"
+          className="absolute left-0 -top-[310px] md:-top-[310px] -top-[50px] h-[240px] md:h-auto w-1/2 md:w-auto"
         />
       </section>
 
