@@ -27,11 +27,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <div data-navbar>
+            <Navbar />
+          </div>
 
           {children}
           
-          <Footer />
+          <div data-footer>
+            <Footer />
+          </div>
         </ThemeProvider>
         <Toaster />
       </body>

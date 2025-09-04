@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Users, Mail, Settings, LogOut, LayoutDashboard, Dice3, BarChart2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Users, Mail, Settings, LogOut, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -13,8 +13,6 @@ export default function Sidebar({ onLogout, collapsed, setCollapsed }: SidebarPr
         { label: "Dashboard", href: "/ghost-dashboard", icon: LayoutDashboard },
         { label: "Inscriptions", href: "/ghost-dashboard/inscriptions", icon: Users },
         { label: "Participations", href: "/ghost-dashboard/participations", icon: Mail },
-        { label: "Tirage au sort", href: "/ghost-dashboard/tirage", icon: Dice3 },
-        { label: "Statistiques", href: "/ghost-dashboard/statistiques", icon: BarChart2 },
     ];
 
     return (

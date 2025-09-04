@@ -14,11 +14,6 @@ export default function Login() {
         e.preventDefault()
         setError(null)
 
-        if (!email.endsWith('@beecee.fr')) {
-            setError('Seuls les emails @beecee.fr sont autorisés')
-            return
-        }
-
         const { error: signInError } = await supabase.auth.signInWithPassword({
             email,
             password

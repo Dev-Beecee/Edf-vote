@@ -5,27 +5,27 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase-client";
 import Sidebar from "@/components/sidebar";
 import ParticipationsTable from "@/components/participation-table/ParticipationsTable";
+import { useAuth } from "@/hooks/use-auth";
 
 type Inscription = {
     id: string;
     nom: string;
     prenom: string;
     email: string;
+    telephone: string;
+    accepte_reglement: boolean;
+    accepte_marketing: boolean;
+    created_at: string;
 };
 
 type Boutique = {
     id: string;
     nom: string;
+    created_at: string;
 };
 
 type Participation = {
     id: string;
-    inscription_id: string;
-    image_url: string | null;
-    ocr_nom_boutique: string;
-    ocr_date_achat: string;
-    ocr_montant: number;
-    boutique_id: string;
     statut_validation: string;
     created_at: string;
     boutique: Boutique;
@@ -34,35 +34,36 @@ type Participation = {
 
 export default function ParticipationsPage() {
     const router = useRouter();
+    const { user, loading: authLoading, logout } = useAuth();
     const [participations, setParticipations] = useState<Participation[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [dataLoading, setDataLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [collapsed, setCollapsed] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const {
-                data: { user },
-            } = await supabase.auth.getUser();
+        // Si l'authentification échoue, rediriger
+        if (!authLoading && !user) {
+            router.push("/ghost");
+            return;
+        }
 
-            if (!user || !user.email?.endsWith("@beecee.fr")) {
-                router.push("/login");
-                return;
-            }
+        // Charger les données seulement si authentifié
+        if (user) {
+            const fetchData = async () => {
+                const { data } = await supabase
+                    .from("participation")
+                    .select("*, boutique: boutique_id (id, nom), inscription: inscription_id (id, nom, prenom, email)")
+                    .order("created_at", { ascending: false });
 
-            const { data } = await supabase
-                .from("participation")
-                .select("*, boutique: boutique_id (id, nom), inscription: inscription_id (id, nom, prenom, email)")
-                .order("created_at", { ascending: false });
+                setParticipations((data as Participation[]) || []);
+                setDataLoading(false);
+            };
 
-            setParticipations((data as Participation[]) || []);
-            setLoading(false);
-        };
-
-        fetchData();
-    }, [router]);
+            fetchData();
+        }
+    }, [user, authLoading, router]);
 
     const updateParticipationStatus = async (id: string, newStatus: string) => {
         const { error } = await supabase
@@ -87,13 +88,27 @@ export default function ParticipationsPage() {
             p.inscription.email.toLowerCase().includes(term)
         );
     });
+
     const handleLogout = async () => {
-        await supabase.auth.signOut();
-        router.push("/login");
+        await logout();
+        router.push("/ghost");
     };
 
-    if (loading) {
-        return <div className="min-h-screen flex items-center justify-center">Chargement...</div>;
+    // Afficher le loader pendant l'authentification
+    if (authLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-indigo-600 mx-auto"></div>
+                    <p className="mt-4 text-gray-600">Vérification de l'authentification...</p>
+                </div>
+            </div>
+        );
+    }
+
+    // Si non authentifié, ne rien afficher (redirection en cours)
+    if (!user) {
+        return null;
     }
 
     return (
@@ -113,12 +128,18 @@ export default function ParticipationsPage() {
                     />
                 </div>
 
-                <ParticipationsTable
-                    participations={filteredParticipations}
-                    updateParticipationStatus={updateParticipationStatus}
-                    setSelectedImage={setSelectedImage}
-                    setIsModalOpen={setIsModalOpen}
-                />
+                {dataLoading ? (
+                    <div className="flex items-center justify-center h-64">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+                    </div>
+                ) : (
+                    <ParticipationsTable
+                        participations={filteredParticipations}
+                        updateParticipationStatus={updateParticipationStatus}
+                        setSelectedImage={setSelectedImage}
+                        setIsModalOpen={setIsModalOpen}
+                    />
+                )}
             </main>
         </div>
     );

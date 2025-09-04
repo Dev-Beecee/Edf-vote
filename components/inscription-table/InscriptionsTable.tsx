@@ -11,11 +11,16 @@ type Soumission = {
     nom: string
     prenom: string
     etablissement: string
-    classe?: string
+    nom_classe?: string
     categorie: string
-    description: string
+    description_breve: string
     statut: string
     video_url: string
+    titre_projet: string
+    email: string
+    telephone: string
+    etablissement_adresse: string
+    nb_eleves: number
     created_at: string
 }
 
@@ -46,12 +51,12 @@ export default function InscriptionsTable({ soumissions }: Props) {
 
 
     const handleExportCSV = () => {
-        const headers = ["Nom", "Prénom", "Établissement", "Classe", "Catégorie", "Statut", "Date"]
+        const headers = ["Nom", "Prénom", "Établissement", "Nom de la classe", "Catégorie", "Statut", "Date"]
         const rows = soumissions.map((i) => [
             i.nom,
             i.prenom,
             i.etablissement,
-            i.classe || "",
+            i.nom_classe || "",
             i.categorie,
             i.statut,
             new Date(i.created_at).toLocaleDateString()
@@ -93,7 +98,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
     return (
         <div>
             <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
-                <h2 className="text-xl font-semibold">Soumissions</h2>
+                
                 <div className="flex items-center gap-4">
                     <Select onValueChange={(value) => setStatutFilter(value)}>
                         <SelectTrigger className="w-[180px]">
@@ -116,7 +121,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
-                                {["Nom", "Prénom", "Établissement", "Classe", "Catégorie", "Statut", "Date", "Vidéo"].map((h) => (
+                                {["Nom", "Prénom", "Établissement", "Nom de la classe", "Catégorie", "Statut", "Date", "Vidéo"].map((h) => (
                                     <th key={h} className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">{h}</th>
                                 ))}
                             </tr>
@@ -124,11 +129,11 @@ export default function InscriptionsTable({ soumissions }: Props) {
                         <tbody className="bg-white divide-y divide-gray-200">
                             {currentItems.map((s) => (
                                 <tr key={s.id}>
-                                    <td className="px-4 py-2 text-sm">{s.nom}</td>
-                                    <td className="px-4 py-2 text-sm">{s.prenom}</td>
-                                    <td className="px-4 py-2 text-sm">{s.etablissement}</td>
-                                    <td className="px-4 py-2 text-sm">{s.classe || "-"}</td>
-                                    <td className="px-4 py-2 text-sm">{s.categorie}</td>
+                                    <td className="px-4 py-2 text-sm text-black">{s.nom}</td>
+                                    <td className="px-4 py-2 text-sm text-black">{s.prenom}</td>
+                                    <td className="px-4 py-2 text-sm text-black">{s.etablissement}</td>
+                                    <td className="px-4 py-2 text-sm text-black">{s.nom_classe || "-"}</td>
+                                    <td className="px-4 py-2 text-sm text-black">{s.categorie}</td>
                                     <td className="px-4 py-2 text-sm">
                                         <Select
                                             value={selectedStatuts[s.id]}
@@ -144,7 +149,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
                                             </SelectContent>
                                         </Select>
                                     </td>
-                                    <td className="px-4 py-2 text-sm">
+                                    <td className="px-4 py-2 text-sm text-black">
                                         {new Date(s.created_at).toLocaleDateString()}
                                     </td>
                                     <td className="px-4 py-2 text-sm">
@@ -153,20 +158,99 @@ export default function InscriptionsTable({ soumissions }: Props) {
                                                 <Button variant="link" onClick={() => setModalInfos(s)}>Voir</Button>
                                             </DialogTrigger>
 
-                                            <DialogContent className="max-w-4xl w-full">
+                                            <DialogContent className="max-w-4xl w-full bg-white max-h-[90vh] overflow-y-auto">
                                                 {modalInfos && (
                                                     <>
-                                                        <DialogTitle>Vidéo de la soumission</DialogTitle>
-                                                        <DialogDescription className="mb-4">
-                                                            Établissement : <strong>{modalInfos.etablissement}</strong><br />
-                                                            Classe : <strong>{modalInfos.classe || "Non renseignée"}</strong><br />
-                                                            Catégorie : <strong>{modalInfos.categorie}</strong>
-                                                        </DialogDescription>
-                                                        <video
-                                                            src={modalInfos.video_url}
-                                                            controls
-                                                            className="w-full rounded-lg"
-                                                        />
+                                                        <DialogTitle className="text-black text-xl font-bold mb-4">
+                                                            Détails de la soumission
+                                                        </DialogTitle>
+                                                        
+                                                        {/* Informations sur l'enseignant */}
+                                                        <div className="flex flex-row gap-6">
+                                                            <div className="mb-6 flex-1">
+                                                                <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
+                                                                    Informations sur l'enseignant
+                                                                </h3>
+                                                                <div className="grid grid-cols-2 gap-4 text-sm">
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Prénom :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.prenom}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Nom :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.nom}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Email :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.email}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Téléphone :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.telephone}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            {/* Informations sur l'établissement */}
+                                                            <div className="mb-6 flex-1">
+                                                                <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
+                                                                    Informations sur l'établissement
+                                                                </h3>
+                                                                <div className="space-y-3 text-sm">
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Nom de l'école/collège :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.etablissement}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Adresse :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.etablissement_adresse}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Catégorie de la classe :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.categorie}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Nom de la classe :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.nom_classe || "Non renseignée"}</span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span className="font-medium text-gray-700">Nombre d'élèves :</span>
+                                                                        <span className="ml-2 text-black">{modalInfos.nb_eleves}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Projet soumis */}
+                                                        <div className="mb-6">
+                                                            <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
+                                                                Projet soumis par la classe
+                                                            </h3>
+                                                            <div className="space-y-3 text-sm">
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Titre du projet :</span>
+                                                                    <span className="ml-2 text-black font-semibold">{modalInfos.titre_projet}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Description du projet :</span>
+                                                                    <div className="mt-2 p-3 bg-gray-50 rounded-lg">
+                                                                        <span className="text-black">{modalInfos.description_breve}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Vidéo */}
+                                                        <div>
+                                                            <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
+                                                                Vidéo du projet
+                                                            </h3>
+                                                            <video
+                                                                src={modalInfos.video_url}
+                                                                controls
+                                                                className="w-full rounded-lg"
+                                                            />
+                                                        </div>
                                                     </>
                                                 )}
                                             </DialogContent>

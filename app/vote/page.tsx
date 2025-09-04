@@ -92,12 +92,20 @@ export default function VotePage() {
 
     const handleSubmit = async () => {
         if (!email || !ip) {
-            toast({ title: "Email requis", description: "Merci de saisir votre email pour voter." })
+            toast({ 
+                title: "Email requis", 
+                description: "Merci de saisir votre email pour voter.",
+                style: { backgroundColor: 'white', color: '#001a70' }
+            })
             return
         }
 
         if (Object.keys(votes).length === 0) {
-            toast({ title: "Sélection requise", description: "Merci de sélectionner au moins une vidéo." })
+            toast({ 
+                title: "Sélection requise", 
+                description: "Merci de sélectionner au moins une vidéo.",
+                style: { backgroundColor: 'white', color: '#001a70' }
+            })
             return
         }
 
@@ -111,7 +119,11 @@ export default function VotePage() {
 
         if (result.alreadyVoted) {
             setHasVoted(true)
-            toast({ title: "Déjà voté", description: "Vous avez déjà voté avec cet email ou depuis cette adresse IP." })
+            toast({ 
+                title: "Déjà voté", 
+                description: "Vous avez déjà voté avec cet email depuis cette adresse IP.",
+                style: { backgroundColor: 'white', color: '#001a70' }
+            })
             return
         }
 
@@ -119,11 +131,19 @@ export default function VotePage() {
             setHasVoted(true)
             setEmail("")
             setVotes({})
-            toast({ title: "Merci pour votre participation", description: "Vos votes ont bien été enregistrés." })
+            toast({ 
+                title: "Merci pour votre participation", 
+                description: "Vos votes ont bien été enregistrés.",
+                style: { backgroundColor: 'white', color: '#001a70' }
+            })
         }
 
         if (result.errors?.length > 0) {
-            toast({ title: "Erreur", description: result.errors.join(", ") })
+            toast({ 
+                title: "Erreur", 
+                description: result.errors.join(", "),
+                style: { backgroundColor: 'white', color: '#001a70' }
+            })
         }
     }
 
@@ -402,7 +422,7 @@ export default function VotePage() {
                                     {currentStep > 1 && (
                                         <Button 
                                             onClick={handlePrevious}
-                                            className="bg-[#001a70] text-white border-none"
+                                            className="bg-[#001a70] text-white border-none uppercase"
                                         >
                                             Précédent
                                         </Button>
@@ -412,7 +432,7 @@ export default function VotePage() {
                                         {currentStep < 3 ? (
                                             <Button 
                                                 onClick={handleNext}
-                                                className="border-none"
+                                                className="border-none uppercase"
                                                 disabled={!canProceedToNext()}
                                             >
                                                 Suivant
@@ -420,7 +440,7 @@ export default function VotePage() {
                                         ) : (
                                             <Button 
                                                 onClick={handleSubmit}
-                                                className="border-none"
+                                                className="border-none uppercase"
                                             >
                                                 Valider mes votes
                                             </Button>
