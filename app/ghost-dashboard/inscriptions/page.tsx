@@ -30,7 +30,6 @@ export default function InscriptionsPage() {
     const { user, loading: authLoading, logout } = useAuth();
     const [soumissions, setSoumissions] = useState<Soumission[]>([]);
     const [dataLoading, setDataLoading] = useState(true);
-    const [searchTerm, setSearchTerm] = useState("");
     const [collapsed, setCollapsed] = useState(false);
 
     useEffect(() => {
@@ -60,14 +59,7 @@ export default function InscriptionsPage() {
         }
     }, [user, authLoading, router]);
 
-    const filteredSoumissions = soumissions.filter((s) => {
-        const term = searchTerm.toLowerCase();
-        return (
-            s.nom.toLowerCase().includes(term) ||
-            s.prenom.toLowerCase().includes(term) ||
-            s.etablissement.toLowerCase().includes(term)
-        );
-    });
+
 
     const handleLogout = async () => {
         await logout();
@@ -100,22 +92,12 @@ export default function InscriptionsPage() {
             <main className={`flex-1 transition-all duration-300 ease-in-out ${collapsed ? "ml-20" : "ml-64"} p-6`}>
                 <h1 className="text-2xl font-bold mb-4 text-black">Liste des Inscriptions</h1>
 
-                <div className="mb-6">
-                    <input
-                        type="text"
-                        placeholder="Rechercher par nom, prénom ou établissement..."
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-
                 {dataLoading ? (
                     <div className="flex items-center justify-center h-64">
                         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
                     </div>
                 ) : (
-                    <InscriptionsTable soumissions={filteredSoumissions} />
+                    <InscriptionsTable soumissions={soumissions} />
                 )}
             </main>
         </div>

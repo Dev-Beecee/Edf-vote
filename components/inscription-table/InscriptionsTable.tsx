@@ -42,12 +42,15 @@ export default function InscriptionsTable({ soumissions }: Props) {
         Object.fromEntries(soumissions.map((s) => [s.id, s.statut]))
     )
 
-    // Appliquer les filtres (statut et recherche par titre) et trier par date de création (du plus récent au plus ancien)
+    // Appliquer les filtres (statut et recherche multi-champs) et trier par date de création (du plus récent au plus ancien)
     const filteredSoumissions = soumissions
         .filter((s) => {
             const matchesStatut = statutFilter === "tous" || s.statut === statutFilter
             const matchesSearch = searchTerm === "" || 
-                s.titre_projet.toLowerCase().includes(searchTerm.toLowerCase())
+                s.titre_projet.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                s.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                s.prenom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                s.etablissement.toLowerCase().includes(searchTerm.toLowerCase())
             return matchesStatut && matchesSearch
         })
         .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
@@ -112,10 +115,10 @@ export default function InscriptionsTable({ soumissions }: Props) {
             <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
                 <div className="flex items-center gap-4">
                     <Input
-                        placeholder="Rechercher par titre de projet..."
+                        placeholder="Rechercher par nom, prénom, établissement ou titre..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-[300px]"
+                        className="w-[450px]"
                     />
                     <Select onValueChange={(value) => setStatutFilter(value)}>
                         <SelectTrigger className="w-[180px]">
