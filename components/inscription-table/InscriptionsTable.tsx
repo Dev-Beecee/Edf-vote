@@ -169,7 +169,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
                                                         <div className="flex flex-row gap-6">
                                                             <div className="mb-6 flex-1">
                                                             <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
-                                                                Informations sur l'enseignant
+                                                                Informations sur l&apos;enseignant
                                                             </h3>
                                                             <div className="grid grid-cols-2 gap-4 text-sm">
                                                                 <div>
@@ -194,11 +194,11 @@ export default function InscriptionsTable({ soumissions }: Props) {
                                                         {/* Informations sur l'établissement */}
                                                             <div className="mb-6 flex-1">
                                                             <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
-                                                                Informations sur l'établissement
+                                                                Informations sur l&apos;établissement
                                                             </h3>
                                                             <div className="space-y-3 text-sm">
                                                                 <div>
-                                                                    <span className="font-medium text-gray-700">Nom de l'école/collège :</span>
+                                                                    <span className="font-medium text-gray-700">Nom de l&apos;école/collège :</span>
                                                                     <span className="ml-2 text-black">{modalInfos.etablissement}</span>
                                                                 </div>
                                                                 <div>
@@ -214,7 +214,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
                                                                     <span className="ml-2 text-black">{modalInfos.nom_classe || "Non renseignée"}</span>
                                                                 </div>
                                                                 <div>
-                                                                    <span className="font-medium text-gray-700">Nombre d'élèves :</span>
+                                                                    <span className="font-medium text-gray-700">Nombre d&apos;élèves :</span>
                                                                     <span className="ml-2 text-black">{modalInfos.nb_eleves}</span>
                                                                     </div>
                                                                 </div>
