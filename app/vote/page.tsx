@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { VoteHeroSection } from "@/components/vote/VoteHeroSection"
+import Image from "next/image"
 
 type Soumission = {
     id: string
@@ -81,7 +82,11 @@ export default function VotePage() {
     }
 
     const canProceedToNext = () => {
-        // L'utilisateur peut toujours passer à l'étape suivante
+        // Pour passer à l'étape 3, l'utilisateur doit avoir voté pour au moins une catégorie
+        if (currentStep === 2) {
+            return Object.keys(votes).length > 0
+        }
+        // Pour les autres étapes, l'utilisateur peut toujours passer à l'étape suivante
         return true
     }
 
@@ -300,6 +305,25 @@ export default function VotePage() {
                             )
                         })}
                     </div>
+                      {/* Bannière vote */}
+        <div className="relative mx-auto px-8 py-4 transform -rotate-1 mt-8" style={{ backgroundColor: '#0e89ff', borderRadius: '16px', width: 'max-content' }}>
+          <span className="text-white font-bold uppercase italic text-sm md:text-xl lg:text-2xl">
+          Pour valider vos votes
+          </span>
+          <Image
+            src="/edf-gros-eclair.png"
+            alt="Trophée"
+            width={64}
+            height={64}
+            className="absolute"
+            style={{ top: '-2.5rem', right: '-1.75rem' }}
+          />
+        </div>
+
+        {/* Titre du vote */}
+        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold mt-8" style={{ color: '#001A70' }}>
+        un vote par catégorie !
+        </div>
                     <div className="space-y-4">
                         <label className="block text-black font-medium">
                             Votre adresse email :
@@ -389,6 +413,7 @@ export default function VotePage() {
                                             <Button 
                                                 onClick={handleNext}
                                                 className="border-none"
+                                                disabled={!canProceedToNext()}
                                             >
                                                 Suivant
                                             </Button>

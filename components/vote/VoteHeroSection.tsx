@@ -47,7 +47,7 @@ export const VoteHeroSection = () => {
 
         {/* Description du vote */}
         <div className="mt-8 max-w-4xl mx-auto px-4">
-          <p className="text-black text-lg text-center leading-relaxed" style={{ fontSize: '18px' }}>
+          <p className="text-black text-lg text-center leading-relaxed mb-12" style={{ fontSize: '18px' }}>
           Sélectionnez votre vidéo préférée dans chaque catégorie.
             <br /><br />
             Vous pouvez voter pour 1 vidéo par niveau avant le 7 novembre 2025. 
