@@ -43,7 +43,7 @@ export function Footer() {
             Voter
           </a>
           <div className="w-8 h-px bg-white mx-6"></div>
-          <a href="/inscription" className="text-white uppercase font-medium hover:underline">
+          <a href="/participation" className="text-white uppercase font-medium hover:underline">
             S&apos;inscrire
           </a>
         </div>

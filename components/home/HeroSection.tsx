@@ -62,26 +62,30 @@ export const HeroSection = () => {
 
         {/* Boutons d'action */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button 
-            className="px-6 py-3 text-white font-semibold"
-            style={{ 
-              backgroundColor: '#001a70', 
-              borderRadius: '8px',
-              boxShadow: '0 1px 2px 0 rgba(16, 24, 40, 0.05)'
-            }}
-          >
-            Je participe
-          </button>
-          <button 
-            className="px-6 py-3 text-white font-semibold"
-            style={{ 
-              backgroundColor: '#FE5715', 
-              borderRadius: '8px',
-              boxShadow: '0 1px 2px 0 rgba(16, 24, 40, 0.05)'
-            }}
-          >
-            Je vote
-          </button>
+          <Link href="/participation">
+            <button 
+              className="px-6 py-3 text-white font-semibold"
+              style={{ 
+                backgroundColor: '#001a70', 
+                borderRadius: '8px',
+                boxShadow: '0 1px 2px 0 rgba(16, 24, 40, 0.05)'
+              }}
+            >
+              Je participe
+            </button>
+          </Link>
+          <Link href="/vote">
+            <button 
+              className="px-6 py-3 text-white font-semibold"
+              style={{ 
+                backgroundColor: '#FE5715', 
+                borderRadius: '8px',
+                boxShadow: '0 1px 2px 0 rgba(16, 24, 40, 0.05)'
+              }}
+            >
+              Je vote
+            </button>
+          </Link>
         </div>
 
         {/* Section des prix */}

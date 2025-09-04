@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const TroisiemeSection = () => {
   return (
@@ -64,16 +65,18 @@ const TroisiemeSection = () => {
           </ul>
 
           {/* Bouton "Je participe" */}
-          <button 
-            className="px-8 py-4 text-white font-semibold text-lg rounded-lg transition-all duration-200 hover:opacity-90"
-            style={{
-              backgroundColor: '#fe5715',
-              borderRadius: '8px',
-              boxShadow: '0 1px 2px 0 rgba(16, 24, 40, 0.05)'
-            }}
-          >
-            Je participe
-          </button>
+          <Link href="/participation">
+            <button 
+              className="px-8 py-4 text-white font-semibold text-lg rounded-lg transition-all duration-200 hover:opacity-90"
+              style={{
+                backgroundColor: '#fe5715',
+                borderRadius: '8px',
+                boxShadow: '0 1px 2px 0 rgba(16, 24, 40, 0.05)'
+              }}
+            >
+              Je participe
+            </button>
+          </Link>
         </div>
       </div>
 
