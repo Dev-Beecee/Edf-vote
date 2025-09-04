@@ -58,13 +58,17 @@ export default function InscriptionsTable({ soumissions }: Props) {
 
 
     const handleExportCSV = () => {
-        const headers = ["Nom", "Prénom", "Établissement", "Nom de la classe", "Catégorie", "Statut", "Titre du projet", "Date"]
+        const headers = ["Nom", "Prénom", "Email", "Téléphone", "Établissement", "Adresse établissement", "Nom de la classe", "Catégorie", "Nombre d'élèves", "Statut", "Titre du projet", "Date"]
         const rows = soumissions.map((i) => [
             i.nom,
             i.prenom,
+            i.email,
+            i.telephone,
             i.etablissement,
+            i.etablissement_adresse,
             i.nom_classe || "",
             i.categorie,
+            i.nb_eleves,
             i.statut,
             i.titre_projet,
             new Date(i.created_at).toLocaleDateString()
