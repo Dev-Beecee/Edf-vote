@@ -40,10 +40,11 @@ export default function InscriptionsTable({ soumissions }: Props) {
         Object.fromEntries(soumissions.map((s) => [s.id, s.statut]))
     )
 
-    // Appliquer le filtre si un statut est sélectionné
-    const filteredSoumissions = statutFilter !== "tous"
+    // Appliquer le filtre si un statut est sélectionné et trier par date de création (du plus récent au plus ancien)
+    const filteredSoumissions = (statutFilter !== "tous"
         ? soumissions.filter((s) => s.statut === statutFilter)
         : soumissions
+    ).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
 
     const totalPages = Math.ceil(filteredSoumissions.length / itemsPerPage)
     const startIndex = (currentPage - 1) * itemsPerPage
