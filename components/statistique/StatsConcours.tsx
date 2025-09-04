@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from '@/hooks/use-toast';
 import { Trophy, Users, Clock, CheckCircle, XCircle, TrendingUp } from "lucide-react";
@@ -23,11 +23,7 @@ export default function StatsConcours() {
     const [loading, setLoading] = useState(true);
     const { toast } = useToast();
 
-    useEffect(() => {
-        fetchStats();
-    }, []);
-
-    const fetchStats = async () => {
+    const fetchStats = useCallback(async () => {
         try {
             setLoading(true);
             const response = await fetch("https://yiuvykjjpycqzkxlnhmc.supabase.co/functions/v1/stats_concours", {
@@ -58,7 +54,11 @@ export default function StatsConcours() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [toast]);
+
+    useEffect(() => {
+        fetchStats();
+    }, [fetchStats]);
 
     if (loading) {
         return (
@@ -204,7 +204,7 @@ export default function StatsConcours() {
                                     {stats.top_projet.nombre_votes}
                                 </div>
                                 <p className="text-xs text-gray-500 mt-1 truncate">
-                                    "{stats.top_projet.titre_projet}"
+                                    &ldquo;{stats.top_projet.titre_projet}&rdquo;
                                 </p>
                                 <p className="text-xs text-gray-400 mt-1">
                                     ID: {stats.top_projet.soumission_id}
