@@ -168,54 +168,54 @@ export default function InscriptionsTable({ soumissions }: Props) {
                                                         {/* Informations sur l'enseignant */}
                                                         <div className="flex flex-row gap-6">
                                                             <div className="mb-6 flex-1">
-                                                                <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
-                                                                    Informations sur l'enseignant
-                                                                </h3>
-                                                                <div className="grid grid-cols-2 gap-4 text-sm">
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Prénom :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.prenom}</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Nom :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.nom}</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Email :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.email}</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Téléphone :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.telephone}</span>
-                                                                    </div>
+                                                            <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
+                                                                Informations sur l'enseignant
+                                                            </h3>
+                                                            <div className="grid grid-cols-2 gap-4 text-sm">
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Prénom :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.prenom}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Nom :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.nom}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Email :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.email}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Téléphone :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.telephone}</span>
                                                                 </div>
                                                             </div>
+                                                        </div>
 
-                                                            {/* Informations sur l'établissement */}
+                                                        {/* Informations sur l'établissement */}
                                                             <div className="mb-6 flex-1">
-                                                                <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
-                                                                    Informations sur l'établissement
-                                                                </h3>
-                                                                <div className="space-y-3 text-sm">
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Nom de l'école/collège :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.etablissement}</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Adresse :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.etablissement_adresse}</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Catégorie de la classe :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.categorie}</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Nom de la classe :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.nom_classe || "Non renseignée"}</span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span className="font-medium text-gray-700">Nombre d'élèves :</span>
-                                                                        <span className="ml-2 text-black">{modalInfos.nb_eleves}</span>
+                                                            <h3 className="text-lg font-semibold text-black mb-3 border-b pb-2">
+                                                                Informations sur l'établissement
+                                                            </h3>
+                                                            <div className="space-y-3 text-sm">
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Nom de l'école/collège :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.etablissement}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Adresse :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.etablissement_adresse}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Catégorie de la classe :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.categorie}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Nom de la classe :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.nom_classe || "Non renseignée"}</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span className="font-medium text-gray-700">Nombre d'élèves :</span>
+                                                                    <span className="ml-2 text-black">{modalInfos.nb_eleves}</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
