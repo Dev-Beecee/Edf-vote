@@ -130,7 +130,7 @@ export default function StatsConcours() {
                             {stats.projets_en_attente}
                         </div>
                         <p className="text-xs text-gray-500 mt-1">
-                            Projets en cours d'évaluation
+                            Projets en cours d&apos;évaluation
                         </p>
                     </CardContent>
                 </Card>
