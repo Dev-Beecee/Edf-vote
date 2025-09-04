@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Sidebar from "@/components/sidebar";
 import { useAuth } from "@/hooks/use-auth";
+import StatsConcours from "@/components/statistique/StatsConcours";
+
 
 export default function GhostDashboard() {
     const router = useRouter();
@@ -38,11 +40,9 @@ export default function GhostDashboard() {
 
             <main className={`flex-1 transition-all duration-300 ease-in-out ${collapsed ? "ml-20" : "ml-64"} p-6`}>
                 <h1 className="text-2xl font-bold mb-6 text-black">Dashboard Administrateur</h1>
-                
+                <StatsConcours />
                 {/* Contenu à ajouter ici */}
-                <div className="bg-white p-6 rounded-lg shadow">
-                    <p className="text-gray-500">Contenu du dashboard à venir...</p>
-                </div>
+               
             </main>
         </div>
     );

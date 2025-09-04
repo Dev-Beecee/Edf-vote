@@ -40,7 +40,9 @@ export default function VotesCountPerProject() {
       }
       
       const result: VotesCountResponse = await response.json();
-      setVotesData(result.data || []);
+      // Trier les données par nombre de votes décroissant
+      const sortedData = (result.data || []).sort((a, b) => b.nombre_votes - a.nombre_votes);
+      setVotesData(sortedData);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erreur lors du chargement des données');
     } finally {
@@ -140,7 +142,7 @@ export default function VotesCountPerProject() {
       </CardHeader>
       <CardContent>
         {/* Statistiques générales */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg">
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {totalProjects}
@@ -153,12 +155,7 @@ export default function VotesCountPerProject() {
             </div>
             <div className="text-sm text-muted-foreground">Total des votes</div>
           </div>
-          <div className="bg-purple-50 dark:bg-purple-950 p-4 rounded-lg">
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-              {totalProjects > 0 ? (totalVotes / totalProjects).toFixed(1) : 0}
-            </div>
-            <div className="text-sm text-muted-foreground">Moyenne votes/projet</div>
-          </div>
+         
         </div>
 
         {/* Tableau des votes */}
@@ -166,7 +163,6 @@ export default function VotesCountPerProject() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">ID</TableHead>
                 <TableHead>Titre du Projet</TableHead>
                 <TableHead className="w-[150px] text-right">Nombre de Votes</TableHead>
               </TableRow>
@@ -174,16 +170,13 @@ export default function VotesCountPerProject() {
             <TableBody>
               {votesData.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={3} className="text-center py-8 text-muted-foreground">
-                    Aucun projet trouvé
-                  </TableCell>
+                                  <TableCell colSpan={2} className="text-center py-8 text-muted-foreground">
+                  Aucun projet trouvé
+                </TableCell>
                 </TableRow>
               ) : (
                 votesData.map((vote) => (
                   <TableRow key={vote.soumission_id}>
-                    <TableCell className="font-mono text-sm">
-                      #{vote.soumission_id}
-                    </TableCell>
                     <TableCell className="font-medium">
                       {vote.titre_projet}
                     </TableCell>
