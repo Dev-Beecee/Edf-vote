@@ -44,8 +44,27 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Shadcn - Landing template",
-  description: "Landing template from Shadcn",
+  title: "Les Génies de l'énergie - concours vidéo ludique - EDF Martinique",
+  description: "EDF en Martinique et le Carbet des Sciences lancent un concours vidéo ludique, pédagogique et engagé destiné aux classes du CP à la 6e, sur le thème « Intelligences et transition énergétique ».",
+  openGraph: {
+    title: "Les Génies de l'énergie - concours vidéo ludique - EDF Martinique",
+    description: "EDF en Martinique et le Carbet des Sciences lancent un concours vidéo ludique, pédagogique et engagé destiné aux classes du CP à la 6e, sur le thème « Intelligences et transition énergétique ».",
+    images: [
+      {
+        url: "/edf-partage.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Les Génies de l'énergie - EDF Martinique",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Les Génies de l'énergie - concours vidéo ludique - EDF Martinique",
+    description: "EDF en Martinique et le Carbet des Sciences lancent un concours vidéo ludique, pédagogique et engagé destiné aux classes du CP à la 6e, sur le thème « Intelligences et transition énergétique ».",
+    images: ["/edf-partage.jpg"],
+  },
 };
 
 export default function RootLayout({
