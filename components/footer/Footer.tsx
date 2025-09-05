@@ -35,15 +35,15 @@ export function Footer() {
         }}
       >
         <div className="flex flex-row justify-center items-center py-8">
-          <a href="/" className="text-white uppercase font-medium hover:underline">
+          <a href="/" className="text-white uppercase font-bold font-edf2020 hover:underline">
             Accueil
           </a>
           <div className="w-8 h-px bg-white mx-6"></div>
-          <a href="/vote" className="text-white uppercase font-medium hover:underline">
+          <a href="/vote" className="text-white uppercase font-bold font-edf2020 hover:underline">
             Voter
           </a>
           <div className="w-8 h-px bg-white mx-6"></div>
-          <a href="/participation" className="text-white uppercase font-medium hover:underline">
+          <a href="/participation" className="text-white uppercase font-bold font-edf2020 hover:underline">
             S&apos;inscrire
           </a>
         </div>

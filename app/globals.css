@@ -172,3 +172,36 @@ html {
     background-size: 15%, 11%;
   }
 }
+
+/* Fonts personnalisées */
+.font-edf2020 {
+  font-family: var(--font-edf2020), sans-serif;
+}
+
+.font-hore {
+  font-family: var(--font-hore), sans-serif;
+}
+
+.font-work-sans {
+  font-family: var(--font-work-sans), sans-serif;
+}
+
+.hero-bg-responsive {
+  background-size: 25%;
+}
+
+@media (min-width: 768px) {
+  .hero-bg-responsive {
+    background-size: 15%;
+  }
+}
+
+.edf-icon-responsive {
+  bottom: -30px;
+}
+
+@media (min-width: 768px) {
+  .edf-icon-responsive {
+    bottom: -50px;
+  }
+}

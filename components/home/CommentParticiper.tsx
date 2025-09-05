@@ -36,7 +36,7 @@ export const CommentParticiper = () => {
       }}
     >
         <div className="relative mx-auto px-8 py-4 transform -rotate-1" style={{ backgroundColor: '#0e89ff', borderRadius: '16px', marginTop: '55px', width: 'fit-content' }}>
-          <span className="text-white font-bold uppercase italic text-lg md:text-xl lg:text-2xl">
+          <span className="text-white font-bold uppercase italic text-lg md:text-xl lg:text-2xl ">
           Comment
           </span>
         
@@ -44,11 +44,11 @@ export const CommentParticiper = () => {
       <div className="max-w-6xl mx-auto">
         {/* Titre de la section */}
                   <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase italic mb-4" style={{ color: '#001a70' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase italic mb-4 font-hore" style={{ color: '#001a70' }}>
            participer au concours ?
             </h2>
             <div className="max-w-3xl mx-auto">
-              <p className="text-center text-black">
+              <p className="text-center text-black font-edf2020">
                 Une belle occasion pour vos élèves de mêler créativité, sciences et engagement pour un futur plus durable. Donnez-leur la parole, et révélez les génies de l&apos;énergie !
               </p>
             </div>

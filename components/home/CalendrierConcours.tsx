@@ -5,19 +5,22 @@ export function CalendrierConcours() {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
+
+        <div className="relative mx-auto px-8 py-4 transform -rotate-1" style={{ backgroundColor: '#0e89ff', borderRadius: '16px', marginTop: '55px', width: 'fit-content' }}>
+          <span className="text-white font-bold uppercase italic text-lg md:text-xl lg:text-2xl ">
+          Calendrier
+          </span>
+        
+        </div>
+
         <div className="text-center mb-12">
-          <div className="inline-flex flex-col items-center mb-4">
-            <div className="bg-blue-600 text-white font-bold text-xl px-6 py-2 rounded-lg mb-2">
-              CALENDRIER
-            </div>
-            <div className="text-[#001A70] font-bold text-xl">
-              DU CONCOURS
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase italic mb-4 font-hore" style={{ color: '#001a70' }}>
+            du Concours            </h2>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-center text-black font-edf2020">
+              Certaines dates sont susceptibles d'être modifiées.              </p>
             </div>
           </div>
-          <p className="text-black text-sm">
-            Certaines dates sont susceptibles d&apos;être modifiées.
-          </p>
-        </div>
 
         {/* Timeline Cards */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 mb-12 relative">
@@ -33,10 +36,10 @@ export function CalendrierConcours() {
                 
               />
             </div>
-            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white">
+            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white font-edf2020">
               Du 15 septembre au 24 octobre
             </h4>
-            <p className="text-[#001A70] text-sm group-hover:text-white">
+            <p className="text-[#001A70] text-sm group-hover:text-white font-edf2020">
               Inscription et enregistrement des participations
             </p>
             {/* Connector image */}
@@ -63,10 +66,10 @@ export function CalendrierConcours() {
                 
               />
             </div>
-            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white">
+            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white font-edf2020">
               Du 27 octobre au 7 novembre 2025
             </h4>
-            <p className="text-[#001A70] text-sm group-hover:text-white">
+            <p className="text-[#001A70] text-sm group-hover:text-white font-edf2020">
               Votes du public sur le site du concours
             </p>
             {/* Connector image */}
@@ -92,10 +95,10 @@ export function CalendrierConcours() {
                 className="text-[#001A70] group-hover:text-white"
               />
             </div>
-            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white">
+            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white font-edf2020">
               Du 10 au 12 novembre 2025
             </h4>
-            <p className="text-[#001A70] text-sm group-hover:text-white">
+            <p className="text-[#001A70] text-sm group-hover:text-white font-edf2020">
               Délibérations du jury sur les différentes catégories
             </p>
             {/* Connector image */}
@@ -121,10 +124,10 @@ export function CalendrierConcours() {
                 className="text-[#001A70] group-hover:text-white"
               />
             </div>
-            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white">
+            <h4 className="text-lg font-semibold mb-2 text-[#001A70] group-hover:text-white font-edf2020">
               Du 20 au 22 novembre 2025
             </h4>
-            <p className="text-[#001A70] text-sm group-hover:text-white">
+            <p className="text-[#001A70] text-sm group-hover:text-white font-edf2020">
               Annonce des gagnants et remise des prix
             </p>
           </div>
