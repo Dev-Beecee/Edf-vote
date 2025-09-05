@@ -135,14 +135,14 @@ export const Navbar = () => {
       <div className="hidden lg:flex gap-4">
         <Button 
           asChild 
-          className="bg-[#001a70] hover:bg-[#001a70]/90 text-white rounded-lg"
+          className="bg-[#001a70] hover:bg-[#001a70]/90 text-white rounded-lg uppercase font-edf2020 font-bold"
         >
           <Link href="/participation">Je participe</Link>
         </Button>
         
         <Button 
           asChild 
-          className="bg-[#fe5715] hover:bg-[#fe5715]/90 text-white rounded-lg"
+          className="font-bold bg-[#fe5715] hover:bg-[#fe5715]/90 text-white rounded-lg uppercase font-edf2020"
         >
           <Link href="/vote">Je vote</Link>
         </Button>
