@@ -256,7 +256,7 @@ export default function InscriptionPage() {
             </div>
             <div className="md:col-span-1">
               <Label className="text-[#344054]">Numéro de téléphone (facultatif)</Label>
-              <Input name="telephone" placeholder="06 12 34 56 78" value={formData.telephone} onChange={handleChange} className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="telephone" placeholder="+696 90 90 90 90" value={formData.telephone} onChange={handleChange} className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
             </div>
           </div>
         </section>
@@ -276,11 +276,11 @@ export default function InscriptionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
               <Label className="text-[#344054]">Nom de l&apos;école ou du collège*</Label>
-              <Input name="etablissement" placeholder="École élémentaire Jean Moulin" value={formData.etablissement} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="etablissement" placeholder="Nom de l’établissement" value={formData.etablissement} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
             </div>
             <div className="md:col-span-2">
               <Label className="text-[#344054]">Adresse*</Label>
-              <Input name="etablissement_adresse" placeholder="123 rue de la République, 75001 Paris" value={formData.etablissement_adresse} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="etablissement_adresse" placeholder="Adresse de l’établissement" value={formData.etablissement_adresse} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
             </div>
           </div>
 
@@ -344,13 +344,13 @@ export default function InscriptionPage() {
         <section className="space-y-4">
           <div>
             <Label className="text-[#344054]">Titre du projet*</Label>
-            <Input name="titre_projet" placeholder="Titre de votre projet" value={formData.titre_projet} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+            <Input name="titre_projet" placeholder="Le rêve de tous !" value={formData.titre_projet} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
           </div>
           <div>
             <Label className="text-[#344054]">Brève description du projet (150 max)</Label>
             <textarea
               name="description_breve"
-              placeholder="Décrivez brièvement votre projet..."
+              placeholder="Expliquer l'idée, le lien avec les « intelligences » et la transition énergétique...."
               value={formData.description_breve}
               onChange={handleChange}
               maxLength={150}
@@ -377,7 +377,7 @@ export default function InscriptionPage() {
               <p className="text-black">🎬 {videoFile.name}</p>
             ) : (
               <>
-                <p className="text-black">Faites glisser une vidéo ici ou cliquez pour en sélectionner une<br></br><span className="text-muted-foreground">Format accepté: MP4</span></p>
+                <p className="text-black">Faites glisser une vidéo ici ou cliquez pour en sélectionner une<br></br><span className="text-muted-foreground">Format accepté : MP4, max 3 minutes, min. 720p</span></p>
                 <br></br>
               
               </>
@@ -441,7 +441,7 @@ export default function InscriptionPage() {
         </section>
 
         <div className="flex justify-center">
-          <Button type="submit" disabled={uploading} className="w-full md:w-auto" style={{ backgroundColor: '#FE5715' }}>
+          <Button type="submit" disabled={uploading} className="w-full md:w-auto z-10" style={{ backgroundColor: '#FE5715' }}>
             {uploading ? "Envoi en cours..." : "Valider l'inscription"}
           </Button>
         </div>

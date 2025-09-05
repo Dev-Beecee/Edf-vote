@@ -21,17 +21,17 @@ export const ParticipationHeroSection = () => {
         </div>
         
         {/* Sous-titre */}
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic mt-4" style={{ color: '#001a70' }}>
+        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic mt-4 italic font-work-sans" style={{ color: '#001a70' }}>
           Des idées pleines d&apos;énergie pour demain !
         </h2>
         
         {/* Bannière concours vidéo */}
         <div className="relative mx-auto px-8 py-4 transform -rotate-1 mt-8" style={{ backgroundColor: '#0e89ff', borderRadius: '16px' }}>
-          <span className="text-white font-bold uppercase italic text-lg md:text-xl lg:text-2xl">
+          <span className="text-white font-bold uppercase italic text-lg md:text-xl lg:text-2xl italic font-work-sans">
             Inscrire une classe
           </span>
           <Image
-            src="/edf-goldcup.png"
+            src="/edf-gros-eclair.png"
             alt="Trophée"
             width={64}
             height={64}
@@ -41,13 +41,13 @@ export const ParticipationHeroSection = () => {
         </div>
 
         {/* Thème du concours */}
-        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold mt-8" style={{ color: '#001A70' }}>
+        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold  font-hore" style={{ color: '#001A70' }}>
           au concours vidéo 2025    
         </div>
 
         {/* Description de la participation */}
         <div className="mt-8 max-w-4xl mx-auto px-4">
-          <p className="text-black text-lg text-center leading-relaxed" style={{ fontSize: '18px' }}>
+          <p className="text-black text-lg text-center leading-relaxed font-edf2020" style={{ fontSize: '18px' }}>
             Ce formulaire est destiné aux enseignants souhaitant inscrire leur classe (du CP à la 6e) au concours. Chaque classe peut soumettre jusqu&apos;à 2 vidéos maximum dans le cadre du concours. Si vous souhaitez envoyer une deuxième vidéo, merci de remplir à nouveau ce formulaire avec les informations correspondantes.
             <br /><br />
                           N&apos;oubliez pas de donner un titre distinct à chaque vidéo pour faciliter l&apos;identification.
@@ -60,7 +60,7 @@ export const ParticipationHeroSection = () => {
             <Button 
               className="px-8 py-4 font-semibold text-lg uppercase"
               style={{ 
-                backgroundColor: 'transparent', 
+                backgroundColor: 'white', 
                 color: '#001a70',
                 border: '1px solid #001a70',
                 borderRadius: '8px',
@@ -76,7 +76,7 @@ export const ParticipationHeroSection = () => {
                 e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
               }}
             >
-              Règlement
+              Règlement du concours
             </Button>
           </Link>
         </div>
