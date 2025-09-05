@@ -347,7 +347,7 @@ export default function InscriptionPage() {
             <Input name="titre_projet" placeholder="Le rêve de tous !" value={formData.titre_projet} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
           </div>
           <div>
-            <Label className="text-[#344054]">Brève description du projet (150 max)</Label>
+            <Label className="text-[#344054]">Brève description du projet (150 max)*</Label>
             <textarea
               name="description_breve"
               placeholder="Expliquer l'idée, le lien avec les « intelligences » et la transition énergétique...."
