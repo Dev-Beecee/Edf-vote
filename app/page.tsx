@@ -5,29 +5,29 @@ import { CalendrierConcours } from "@/components/home/CalendrierConcours";
 import PartenairesSection from "@/components/home/PartenairesSection";
 
 export const metadata = {
-  title: "EDF - Vote",
-  description: "EDF - Vote",
+  title: "Les Génies de l'énergie - Accueil | Concours vidéo EDF Martinique",
+  description: "Découvrez le concours vidéo ludique 'Les Génies de l'énergie' organisé par EDF Martinique et le Carbet des Sciences. Un défi pédagogique pour les classes du CP à la 6e sur le thème 'Intelligences et transition énergétique'.",
   openGraph: {
     type: "website",
-    url: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Shadcn - Landing template",
-    description: "EDF - Vote",
+    url: "https://concoursvideo.edf-mq.fr",
+    title: "Les Génies de l'énergie - Concours vidéo EDF Martinique",
+    description: "Découvrez le concours vidéo ludique 'Les Génies de l'énergie' organisé par EDF Martinique et le Carbet des Sciences. Un défi pédagogique pour les classes du CP à la 6e sur le thème 'Intelligences et transition énergétique'.",
     images: [
       {
-        url: "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+        url: "/edf-partage.jpg",
         width: 1200,
         height: 630,
-        alt: "Shadcn - Landing template",
+        alt: "Les Génies de l'énergie - EDF Martinique",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Shadcn - Landing template",
-    description: "EDF - Vote",
+    site: "@EDF_Martinique",
+    title: "Les Génies de l'énergie - Concours vidéo EDF Martinique",
+    description: "Découvrez le concours vidéo ludique 'Les Génies de l'énergie' organisé par EDF Martinique et le Carbet des Sciences. Un défi pédagogique pour les classes du CP à la 6e sur le thème 'Intelligences et transition énergétique'.",
     images: [
-      "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+      "/edf-partage.jpg",
     ],
   },
 };
