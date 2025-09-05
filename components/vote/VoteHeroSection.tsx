@@ -21,13 +21,13 @@ export const VoteHeroSection = () => {
         </div>
         
         {/* Sous-titre */}
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic mt-4" style={{ color: '#001a70' }}>
+        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic mt-4 font-work-sans" style={{ color: '#001a70' }}>
         Des idées pleines d’énergie pour demain !
         </h2>
         
         {/* Bannière vote */}
         <div className="relative mx-auto px-8 py-4 transform -rotate-1 mt-8" style={{ backgroundColor: '#0e89ff', borderRadius: '16px' }}>
-          <span className="text-white font-bold uppercase italic text-sm md:text-xl lg:text-2xl">
+          <span className="text-white font-bold uppercase italic text-sm md:text-xl lg:text-2xl font-work-sans">
           Votez pour vos vidéos préférées
           </span>
           <Image
@@ -41,16 +41,16 @@ export const VoteHeroSection = () => {
         </div>
 
         {/* Titre du vote */}
-        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold mt-8" style={{ color: '#001A70' }}>
+        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold mt-8 font-hore" style={{ color: '#001A70' }}>
         un vote par catégorie !
         </div>
 
         {/* Description du vote */}
         <div className="mt-8 max-w-4xl mx-auto px-4">
-          <p className="text-black text-lg text-center leading-relaxed mb-12" style={{ fontSize: '18px' }}>
+          <p className="text-black text-lg text-center leading-relaxed mb-12 font-edf2020" style={{ fontSize: '18px' }}>
           Sélectionnez votre vidéo préférée dans chaque catégorie.
             <br /><br />
-            Vous pouvez voter pour 1 vidéo par niveau avant le 7 novembre 2025. 
+            Vous pouvez voter pour 1 vidéo par niveau avant <span className="underline">le 7 novembre 2025.</span> 
           </p>
         </div>
 

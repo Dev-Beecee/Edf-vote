@@ -160,13 +160,13 @@ export default function VotePage() {
             return (
                 <div className="space-y-6">
                     <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-                        <h2 className="text-xl md:text-2xl font-bold text-[#001a70]">Étape 1 : Votez pour {categories[0]}</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-[#001a70] font-edf2020">Étape 1 : Votez pour {categories[0]}</h2>
                         {votes[categories[0]] && (
                             <Button 
                                 onClick={() => clearVoteForStep(1)}
                                 variant="outline"
                                 size="sm"
-                                className="text-[#FE5715] border-[#FE5715] bg-white hover:bg-white hover:text-[#FE5715]"
+                                className="text-[#FE5715] border-[#FE5715] bg-white hover:bg-white hover:text-[#FE5715] uppercase font-edf2020"
                             >
                                 Désélectionner
                             </Button>
@@ -177,15 +177,15 @@ export default function VotePage() {
                             displayedVideos.map((video) => (
                                 <div key={video.id} className="p-4 rounded-lg bg-white">
                                     <video src={video.video_url} controls className="w-full rounded mb-2" />
-                                    <p className="text-black"><strong>{video.titre_projet}</strong></p>
+                                    <p className="text-black font-edf2020 font-bold"><strong>{video.titre_projet}</strong></p>
                                     <div className="h-[90px]">
-                                    <p className="text-black text-sm mb-2">{video.description_breve}</p>
+                                    <p className="text-black font-edf2020 text-sm mb-2">{video.description_breve}</p>
                                     </div>
                                     
-                                    <p className="text-black text-sm mt-2.5"><strong>Établissement </strong></p>
-                                    <p className="text-black text-sm">{video.etablissement}</p>
-                                    <p className="text-black text-sm mt-2.5"><strong>Classe </strong> </p>
-                                    <p className="text-black text-sm "> {video.nom_classe || "Non renseignée"}</p>
+                                    <p className="text-black font-edf2020 text-sm mt-2.5"><strong>Établissement </strong></p>
+                                    <p className="text-black font-edf2020 text-sm">{video.etablissement}</p>
+                                    <p className="text-black font-edf2020 text-sm mt-2.5"><strong>Classe </strong> </p>
+                                    <p className="text-black font-edf2020 text-sm "> {video.nom_classe || "Non renseignée"}</p>
                                     <div className="flex justify-center">
                                         <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
                                             <input
@@ -196,7 +196,7 @@ export default function VotePage() {
                                                 onChange={() => handleVoteChange(categories[0], video.id)}
                                                 className="text-blue-600"
                                             />
-                                            <span className="text-black font-medium">Je vote</span>
+                                            <span className="text-black font-bold font-edf2020 uppercase">Je vote</span>
                                         </label>
                                     </div>
                                 </div>
@@ -212,7 +212,7 @@ export default function VotePage() {
                         <div className="flex justify-center mt-6">
                             <button
                                 onClick={() => handleShowAllVideos(categories[0])}
-                                className="px-6 py-3 text-[#001a70] bg-transparent border border-[#001a70] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md"
+                                className="px-6 py-3 text-[#001a70] font-edf2020 uppercase bg-transparent border border-[#001a70] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md"
                                 style={{
                                     backgroundColor: 'transparent',
                                     color: 'rgb(0, 26, 112)',
@@ -239,13 +239,13 @@ export default function VotePage() {
             return (
                 <div className="space-y-6">
                     <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-                        <h2 className="text-xl md:text-2xl font-bold text-[#001a70]">Étape 2 : Votez pour {categories[1]}</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-[#001a70] font-edf2020">Étape 2 : Votez pour {categories[1]}</h2>
                         {votes[categories[1]] && (
                             <Button 
                                 onClick={() => clearVoteForStep(2)}
                                 variant="outline"
                                 size="sm"
-                                className="text-[#FE5715] border-[#FE5715] bg-white hover:bg-white hover:text-[#FE5715]"
+                                className="text-[#FE5715] border-[#FE5715] bg-white hover:bg-white hover:text-[#FE5715] font-edf2020 uppercase"
                             >
                                 Désélectionner
                             </Button>
@@ -256,15 +256,15 @@ export default function VotePage() {
                             displayedVideos.map((video) => (
                                 <div key={video.id} className="p-4 rounded-lg bg-white">
                                     <video src={video.video_url} controls className="w-full rounded mb-2" />
-                                    <p className="text-black"><strong>{video.titre_projet}</strong></p>
+                                    <p className="text-black font-edf2020 font-bold"><strong>{video.titre_projet}</strong></p>
                                     <div className="h-[90px]">
-                                    <p className="text-black text-sm mb-2">{video.description_breve}</p>
+                                    <p className="text-black font-edf2020 text-sm mb-2">{video.description_breve}</p>
                                     </div>
                                     
-                                    <p className="text-black text-sm mt-2.5"><strong>Établissement </strong></p>
-                                    <p className="text-black text-sm">{video.etablissement}</p>
+                                    <p className="text-black font-edf2020 text-sm mt-2.5"><strong>Établissement </strong></p>
+                                    <p className="text-black font-edf2020 text-sm">{video.etablissement}</p>
                                     <p className="text-black text-sm mt-2.5"><strong>Classe </strong> </p>
-                                    <p className="text-black text-sm "> {video.nom_classe || "Non renseignée"}</p>
+                                    <p className="text-black font-edf2020 text-sm "> {video.nom_classe || "Non renseignée"}</p>
                                     <div className="flex justify-center">
                                         <label className="flex items-center mt-2 space-x-2 text-black cursor-pointer">
                                             <input
@@ -291,7 +291,7 @@ export default function VotePage() {
                         <div className="flex justify-center mt-6">
                             <button
                                 onClick={() => handleShowAllVideos(categories[1])}
-                                className="px-6 py-3 text-[#001a70] bg-transparent border border-[#001a70] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md"
+                                className="px-6 py-3 text-[#001a70] bg-transparent border border-[#001a70] rounded-lg shadow-sm transition-all duration-300 hover:shadow-md font-edf2020 uppercase"
                                 style={{
                                     backgroundColor: 'transparent',
                                     color: 'rgb(0, 26, 112)',
@@ -313,9 +313,9 @@ export default function VotePage() {
         if (currentStep === 3) {
             return (
                 <div className="space-y-6">
-                    <h2 className="text-xl md:text-2xl font-bold text-[#001a70]">Étape 3 : Confirmez votre vote</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-[#001a70] font-edf2020 ">Étape 3 : Confirmez votre vote</h2>
                     <div className="bg-gray-50 p-6 rounded-lg">
-                        <h3 className="text-lg font-semibold text-black mb-4">Récapitulatif de vos votes :</h3>
+                        <h3 className="text-lg font-semibold text-black mb-4 font-edf2020">Récapitulatif de vos votes :</h3>
                         {Object.entries(votes).map(([categorie, videoId]) => {
                             const video = data[categorie]?.find(v => v.id === videoId)
                             return (
@@ -341,7 +341,7 @@ export default function VotePage() {
         </div>
 
         {/* Titre du vote */}
-        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold mt-8" style={{ color: '#001A70' }}>
+        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold  font-hore" style={{ color: '#001A70' }}>
         un vote par catégorie !
         </div>
                     <div className="space-y-4">
@@ -383,7 +383,7 @@ export default function VotePage() {
                                     }`}>
                                         {step}
                                     </div>
-                                    <div className="mt-2 text-sm text-center">
+                                    <div className="mt-2 text-sm text-center font-edf2020 font-bold">
                                         {step === 1 && <span className={step <= currentStep ? 'text-[#001a70]' : 'text-gray-600'}>{categories[0]}</span>}
                                         {step === 2 && <span className={step <= currentStep ? 'text-[#001a70]' : 'text-gray-600'}>{categories[1]}</span>}
                                         {step === 3 && <span className={step <= currentStep ? 'text-[#001a70]' : 'text-gray-600'}>Validation</span>}
