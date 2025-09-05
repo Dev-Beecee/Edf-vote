@@ -2,13 +2,21 @@
 module.exports = {
   siteUrl: "https://concoursvideo.edf-mq.fr",
   generateRobotsTxt: true,
-  exclude: ["/ghost-dashboard", "/ghost-dashboard/*"],
+  exclude: [
+    "/ghost-dashboard",
+    "/ghost-dashboard/*",
+    "/participation/confirmation",
+  ],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/ghost-dashboard", "/ghost-dashboard/*"],
+        disallow: [
+          "/ghost-dashboard",
+          "/ghost-dashboard/*",
+          "/participation/confirmation",
+        ],
       },
     ],
   },

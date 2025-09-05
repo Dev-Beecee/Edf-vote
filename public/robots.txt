@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /ghost-dashboard
 Disallow: /ghost-dashboard/*
+Disallow: /participation/confirmation
 
 # Host
 Host: https://concoursvideo.edf-mq.fr
