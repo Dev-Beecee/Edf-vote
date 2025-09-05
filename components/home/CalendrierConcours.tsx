@@ -18,7 +18,7 @@ export function CalendrierConcours() {
             du Concours            </h2>
             <div className="max-w-3xl mx-auto">
               <p className="text-center text-black font-edf2020">
-              Certaines dates sont susceptibles d'être modifiées.              </p>
+              Certaines dates sont susceptibles d&apos;être modifiées.              </p>
             </div>
           </div>
 
