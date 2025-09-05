@@ -48,20 +48,17 @@ const TroisiemeSection = () => {
           <ul className="space-y-3 mb-8">
             <li className="flex items-center">
               <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3" />
-              <span className="text-white text-lg font-edf2020">L&apos;énergie renouvelable et la transition écologique</span>
+              <span className="text-white text-lg font-edf2020">Le système énergétique idéal de la Martinique dans 50 ans</span>
             </li>
             <li className="flex items-center">
               <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3 " />
-              <span className="text-white text-lg font-edf2020">Les innovations technologiques du secteur énergétique</span>
+              <span className="text-white text-lg font-edf2020">Une invention qui produit de l’énergie sans polluer</span>
             </li>
             <li className="flex items-center">
               <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3 " />
-              <span className="text-white text-lg font-edf2020">La consommation responsable et les économies d&apos;énergie</span>
+              <span className="text-white text-lg font-edf2020">L’intelligence collective au service de l’environnement</span>
             </li>
-            <li className="flex items-center">
-                <Image src="/edf-gros-eclair.png" alt="Éclair" width={24} height={24} className="w-6 h-6 mr-3 font-edf2020" />
-              <span className="text-white text-lg font-edf2020">Les métiers de l&apos;énergie et les carrières du futur</span>
-            </li>
+            
           </ul>
 
           {/* Bouton "Je participe" */}

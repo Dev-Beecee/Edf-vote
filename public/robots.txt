@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /ghost-dashboard
+Disallow: /ghost-dashboard/*
+
+# Host
+Host: https://concoursvideo.edf-mq.fr
+
+# Sitemaps
+Sitemap: https://concoursvideo.edf-mq.fr/sitemap.xml

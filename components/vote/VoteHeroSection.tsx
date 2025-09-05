@@ -41,7 +41,7 @@ export const VoteHeroSection = () => {
         </div>
 
         {/* Titre du vote */}
-        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold mt-8 font-hore" style={{ color: '#001A70' }}>
+        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold  font-hore" style={{ color: '#001A70' }}>
         un vote par catégorie !
         </div>
 
