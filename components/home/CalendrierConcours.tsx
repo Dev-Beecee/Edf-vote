@@ -58,7 +58,7 @@ export function CalendrierConcours() {
           <div className="flex flex-col items-center text-center w-full md:w-48 lg:w-64 relative bg-blue-100 p-6 rounded-lg transition-all duration-300 hover:bg-blue-900 group">
             <div className="relative z-10 w-24 h-24 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-900">
               <Image
-                src="/edf-eclair.png"
+                src="/edf-bubble.png"
                 alt="Votes"
                 width={48}
                 height={48}
