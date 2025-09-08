@@ -44,7 +44,7 @@ export const CommentParticiper = () => {
       <div className="max-w-6xl mx-auto">
         {/* Titre de la section */}
                   <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase italic mb-4 font-hore" style={{ color: '#001a70' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase mb-4 font-hore" style={{ color: '#001a70' }}>
            participer au concours ?
             </h2>
             <div className="max-w-3xl mx-auto">

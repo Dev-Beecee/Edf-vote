@@ -14,7 +14,7 @@ export function CalendrierConcours() {
         </div>
 
         <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase italic mb-4 font-hore" style={{ color: '#001a70' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase mb-4 font-hore" style={{ color: '#001a70' }}>
             du Concours            </h2>
             <div className="max-w-3xl mx-auto">
               <p className="text-center text-black font-edf2020">
