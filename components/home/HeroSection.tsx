@@ -17,7 +17,7 @@ export const HeroSection = () => {
           <Image
             src="/edf-logo-header-2x.png"
             alt="EDF Logo"
-            width={300}
+            width={400}
             height={100}
             className="mx-auto"
             priority
@@ -25,7 +25,7 @@ export const HeroSection = () => {
         </div>
         
         {/* Phrase centrée avec style */}
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic font-work-sans" style={{ color: '#001a70' }}>
+        <h2 className="text-center text-2xl font-bold uppercase italic font-work-sans" style={{ color: '#001a70' }}>
           Des idées pleines d&apos;énergie pour demain !
         </h2>
         

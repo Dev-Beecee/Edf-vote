@@ -13,7 +13,7 @@ export const VoteHeroSection = () => {
           <Image
             src="/edf-logo-header-2x.png"
             alt="EDF Logo"
-            width={300}
+            width={400}
             height={100}
             className="mx-auto"
             priority
@@ -21,7 +21,7 @@ export const VoteHeroSection = () => {
         </div>
         
         {/* Sous-titre */}
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold uppercase italic mt-4 font-work-sans" style={{ color: '#001a70' }}>
+        <h2 className="text-center text-2xl font-bold uppercase italic mt-4 font-work-sans" style={{ color: '#001a70' }}>
         Des idées pleines d’énergie pour demain !
         </h2>
         
