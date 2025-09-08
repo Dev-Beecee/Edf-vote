@@ -48,7 +48,7 @@ export const ParticipationHeroSection = () => {
         {/* Description de la participation */}
         <div className="mt-8 max-w-4xl mx-auto px-4">
           <p className="text-black text-lg text-center leading-relaxed font-edf2020" style={{ fontSize: '18px' }}>
-            Ce formulaire est destiné aux enseignants souhaitant inscrire leur classe (du CP à la 6e) au concours. Chaque classe peut soumettre jusqu&apos;à 2 vidéos maximum dans le cadre du concours. Si vous souhaitez envoyer une deuxième vidéo, merci de remplir à nouveau ce formulaire avec les informations correspondantes.
+            Ce formulaire est destiné aux enseignants souhaitant inscrire leur classe (du CP à la 6e) au concours. Chaque classe peut soumettre jusqu&apos;à 2 vidéos maximum dans le cadre du concours.<br /> Si vous souhaitez envoyer une deuxième vidéo, merci de remplir à nouveau ce formulaire avec les informations correspondantes.
             <br /><br />
                           N&apos;oubliez pas de donner un titre distinct à chaque vidéo pour faciliter l&apos;identification.
           </p>
