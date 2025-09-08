@@ -30,7 +30,7 @@ const CookieConsent = React.forwardRef<HTMLDivElement, CookieConsentProps>(
       onAcceptCallback = () => {},
       onDeclineCallback = () => {},
       className,
-      description = "We use cookies to ensure you get the best experience on our website. For more information on how we use cookies, please see our cookie policy.",
+      description = "Nous utilisons des cookies afin de vous garantir la meilleure expérience sur notre site web. Pour en savoir plus sur l’utilisation que nous faisons des cookies, veuillez consulter notre politique en matière de cookies.",
       learnMoreHref = "#",
       ...props
     },
@@ -95,23 +95,14 @@ const CookieConsent = React.forwardRef<HTMLDivElement, CookieConsentProps>(
         <div {...commonWrapperProps}>
           <Card className="m-3 shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-lg">We use cookies</CardTitle>
+              <CardTitle className="text-lg">Gérer le consentement aux cookies</CardTitle>
               <Cookie className="h-5 w-5" />
             </CardHeader>
             <CardContent className="space-y-2">
               <CardDescription className="text-sm">
                 {description}
               </CardDescription>
-              <p className="text-xs text-muted-foreground">
-                By clicking <span className="font-medium">"Accept"</span>, you
-                agree to our use of cookies.
-              </p>
-              <a
-                href={learnMoreHref}
-                className="text-xs text-primary underline underline-offset-4 hover:no-underline"
-              >
-                Learn more
-              </a>
+             
             </CardContent>
             <CardFooter className="flex gap-2 pt-2">
               <Button
@@ -119,10 +110,10 @@ const CookieConsent = React.forwardRef<HTMLDivElement, CookieConsentProps>(
                 variant="secondary"
                 className="flex-1"
               >
-                Decline
+                Refuser
               </Button>
               <Button onClick={handleAccept} className="flex-1">
-                Accept
+                Accepter
               </Button>
             </CardFooter>
           </Card>
