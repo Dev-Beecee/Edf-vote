@@ -7,6 +7,8 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/footer/Footer";
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import { CookieConsentWrapper } from "@/components/cookie-consent-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -78,6 +80,8 @@ export default function RootLayout({
   return (
     <html lang="pt-br" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background", inter.className, edf2020.variable, hore.variable, workSans.variable)}>
+        <GoogleAnalytics measurementId="G-6DBHXRXEHP" />
+        
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -94,6 +98,9 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
+        
+        <CookieConsentWrapper />
+        
         <Toaster />
       </body>
     </html>
