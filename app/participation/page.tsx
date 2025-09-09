@@ -244,19 +244,19 @@ export default function InscriptionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label className="text-[#344054]">Prénom*</Label>
-              <Input name="prenom" placeholder="Votre prénom" value={formData.prenom} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="prenom" placeholder="Votre prénom" value={formData.prenom} onChange={handleChange} required className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]" />
             </div>
             <div>
               <Label className="text-[#344054]">Nom*</Label>
-              <Input name="nom" placeholder="Votre nom" value={formData.nom} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="nom" placeholder="Votre nom" value={formData.nom} onChange={handleChange} required className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]" />
             </div>
             <div className="md:col-span-1">
               <Label className="text-[#344054]">Adresse mail professionnelle*</Label>
-              <Input type="email" name="email" placeholder="exemple@ecole.fr" value={formData.email} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input type="email" name="email" placeholder="exemple@ecole.fr" value={formData.email} onChange={handleChange} required className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]" />
             </div>
             <div className="md:col-span-1">
               <Label className="text-[#344054]">Numéro de téléphone (facultatif)</Label>
-              <Input name="telephone" placeholder="+696 90 90 90 90" value={formData.telephone} onChange={handleChange} className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="telephone" placeholder="+696 90 90 90 90" value={formData.telephone} onChange={handleChange} className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]" />
             </div>
           </div>
         </section>
@@ -276,11 +276,11 @@ export default function InscriptionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:col-span-2">
               <Label className="text-[#344054]">Nom de l&apos;école ou du collège*</Label>
-              <Input name="etablissement" placeholder="Nom de l’établissement" value={formData.etablissement} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="etablissement" placeholder="Nom de l'établissement" value={formData.etablissement} onChange={handleChange} required className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]" />
             </div>
             <div className="md:col-span-2">
               <Label className="text-[#344054]">Adresse*</Label>
-              <Input name="etablissement_adresse" placeholder="Adresse de l’établissement" value={formData.etablissement_adresse} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+              <Input name="etablissement_adresse" placeholder="Adresse de l'établissement" value={formData.etablissement_adresse} onChange={handleChange} required className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]" />
             </div>
           </div>
 
@@ -303,13 +303,13 @@ export default function InscriptionPage() {
 
             <div>
               <Label className="text-[#344054]">Nom de la classe*</Label>
-              <Input
+                <Input
                 name="nom_classe"
                 placeholder="Exemple: CP1, CE2 B..."
                 value={formData.nom_classe}
                 onChange={handleChange}
                 required
-                className="bg-white placeholder:text-black text-black border-[#d0d5dd]"
+                className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]"
               />
             </div>
 
@@ -323,7 +323,7 @@ export default function InscriptionPage() {
                 value={formData.nb_eleves}
                 onChange={handleChange}
                 required
-                className="bg-white placeholder:text-black text-black border-[#d0d5dd]"
+                className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]"
               />
             </div>
           </div>
@@ -344,7 +344,7 @@ export default function InscriptionPage() {
         <section className="space-y-4">
           <div>
             <Label className="text-[#344054]">Titre du projet*</Label>
-            <Input name="titre_projet" placeholder="Le rêve de tous !" value={formData.titre_projet} onChange={handleChange} required className="bg-white placeholder:text-black text-black border-[#d0d5dd]" />
+            <Input name="titre_projet" placeholder="Le rêve de tous !" value={formData.titre_projet} onChange={handleChange} required className="bg-white placeholder:text-[#667085] text-black border-[#d0d5dd]" />
           </div>
           <div>
             <Label className="text-[#344054]">Brève description du projet (150 max)*</Label>
@@ -355,7 +355,7 @@ export default function InscriptionPage() {
               onChange={handleChange}
               maxLength={150}
               required
-              className="w-full border border-[#d0d5dd] rounded p-2 min-h-[120px] bg-white placeholder:text-black text-black"
+              className="w-full border border-[#d0d5dd] rounded p-2 min-h-[120px] bg-white placeholder:text-[#667085] text-black"
             />
             <div className="text-sm text-gray-500 text-right mt-1">
               {formData.description_breve?.length || 0}/150 caractères

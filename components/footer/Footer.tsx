@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export function Footer() {
     return (
-        <footer className="w-full  mt-12  text-center text-sm text-muted-foreground">
+        <footer className="w-full mt-12 md:mt-32 text-center text-sm text-muted-foreground">
 
 <section 
         className="w-full relative"
