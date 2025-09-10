@@ -425,7 +425,7 @@ export default function VotePage() {
         <div className="mt-8 max-w-4xl mx-auto px-4">
           <p className="text-black text-lg text-center leading-relaxed mb-16 font-edf2020" style={{ fontSize: '18px' }}>
           
-            Merci pour votre participation. Résultat du concours  <span className="underline">le 7 novembre 2025.</span> 
+            Merci pour votre participation. Résultat du concours  <span className="underline">le 12 novembre 2025.</span> 
           </p>
         </div>
                     </div>
