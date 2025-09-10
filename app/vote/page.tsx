@@ -400,8 +400,34 @@ export default function VotePage() {
                 </div>
 
                 {hasVoted ? (
-                    <div className="p-6 text-green-600 font-medium border border-green-300 bg-green-50 rounded">
-                        Merci pour votre participation ! 
+                    <div>
+                        <div className="mb-8">
+                            <Image
+                                src="/edf-logo-header-2x.png"
+                                alt="EDF Logo"
+                                width={300}
+                                height={100}
+                                className="mx-auto"
+                                priority
+                            />
+                        </div>
+                        
+                        
+                        
+                        <div className="relative mx-auto px-8 py-4 transform -rotate-1 mt-8" style={{ backgroundColor: '#0e89ff', borderRadius: '16px', width: 'max-content' }}>
+                            <span className="text-white font-bold uppercase text-lg md:text-xl lg:text-2xl font-edf2020">
+                                votre vote
+                            </span>
+                        </div>
+                        <div className="text-center text-3xl md:text-4xl lg:text-5xl font-bold  font-hore" style={{ color: '#001A70' }}>
+        a bien éte enregistre!
+        </div>
+        <div className="mt-8 max-w-4xl mx-auto px-4">
+          <p className="text-black text-lg text-center leading-relaxed mb-16 font-edf2020" style={{ fontSize: '18px' }}>
+          
+            Merci pour votre participation. Résultat du concours  <span className="underline">le 7 novembre 2025.</span> 
+          </p>
+        </div>
                     </div>
                 ) : (
                     <>
