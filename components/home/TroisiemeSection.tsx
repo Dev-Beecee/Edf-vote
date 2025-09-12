@@ -41,7 +41,7 @@ const TroisiemeSection = () => {
 
           {/* Paragraphe */}
           <p className="text-white text-lg md:text-xl mb-6 font-edf2020 bold">
-          Objectif : faire comprendre le fonctionnement d'un système électrique insulaire et l'importance de la transition énergétique pour notre territoire. Exemples :
+          Objectif : faire comprendre le fonctionnement d&apos;un système électrique insulaire et l&apos;importance de la transition énergétique pour notre territoire. Exemples :
 
           </p>
 
