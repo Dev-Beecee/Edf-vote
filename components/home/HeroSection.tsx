@@ -93,7 +93,7 @@ export const HeroSection = () => {
             À LA CLÉ ?
           </p>
           <p className="text-right underline font-normal text-xl md:text-3xl lg:text-3xl font-hore" style={{ color: '#001A70', fontWeight: '400' }}>
-            Une sortie pédagogique et des cadeaux <br></br>à gagner pour les meilleures vidéos.
+          Une sortie pédagogique et des cadeaux à gagner.
           </p>
         </div>
 

@@ -72,8 +72,7 @@ export const CommentParticiper = () => {
             Réalisation de la video
             </h4>
             <p className="text-gray-600 mt-2 text-black">
-            Possibilité de réaliser cela en classe ou en groupe
-            </p>
+            En classe ou en groupe            </p>
             <div className="hidden md:block absolute top-12 right-[-50%] w-full">
               <Image
                 src="/edf-comment-sep.png"
@@ -130,7 +129,7 @@ export const CommentParticiper = () => {
             Appel aux votes
             </h4>
             <p className="text-gray-600 mt-2 text-black">
-            Afin de faire partie du Top 3 et de gagner le meilleur prix
+            Afin de gagner le meilleur prix
             </p>
           </div>
         </div>
