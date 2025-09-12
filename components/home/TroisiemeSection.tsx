@@ -41,7 +41,8 @@ const TroisiemeSection = () => {
 
           {/* Paragraphe */}
           <p className="text-white text-lg md:text-xl mb-6 font-edf2020 bold">
-            Vos élèves peuvent laisser libre cours à leur imagination autour de :
+          Objectif : faire comprendre le fonctionnement d'un système électrique insulaire et l'importance de la transition énergétique pour notre territoire. Exemples :
+
           </p>
 
           {/* Liste avec éclairs */}

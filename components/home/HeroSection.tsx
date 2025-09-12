@@ -54,7 +54,7 @@ export const HeroSection = () => {
         {/* Description du concours */}
         <div className="mt-8 max-w-4xl mx-auto px-4">
           <p className="text-black text-lg text-center font-edf2020" style={{ fontSize: '18px' }}>
-            EDF en Martinique et le Carbet des Sciences lancent un concours vidéo ludique, pédagogique et engagé destiné aux classes du CP à la 6e, sur le thème « Intelligences et transition énergétique ».
+          Dans le cadre de la Fête de la Science 2025, EDF en Martinique et le Carbet des Sciences lancent un concours vidéo ludique, pédagogique et engagé destiné aux classes du CP à la 6e, sur le thème « Intelligences et transition énergétique ».
             À travers la création de vidéos de 3 minutes, les élèves sont invités à imaginer des solutions locales et intelligentes pour aider la Martinique à réussir sa transition énergétique.
           </p>
         </div>

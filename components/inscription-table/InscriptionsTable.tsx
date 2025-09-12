@@ -79,7 +79,7 @@ export default function InscriptionsTable({ soumissions }: Props) {
 
         const csvContent =
             [headers, ...rows]
-                .map((row) => row.map((val) => `"${val.toString().replace(/"/g, '""')}"`).join(","))
+                .map((row) => row.map((val) => `"${(val ?? "").toString().replace(/"/g, '""')}"`).join(","))
                 .join("\n")
 
         const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })

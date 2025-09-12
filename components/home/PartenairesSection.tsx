@@ -26,7 +26,7 @@ export default function PartenairesSection() {
           
           {/* Titre bleu 900 uppercase */}
           <h2 className="text-blue-900 font-bold uppercase text-2xl md:text-3xl lg:text-4xl  mb-6 font-hore">
-            engagé pour le concours
+            engagés pour le concours
           </h2>
           
           {/* Paragraphe */}
